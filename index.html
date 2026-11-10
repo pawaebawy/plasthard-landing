@@ -218,7 +218,7 @@ ul{ margin:0; padding:0; list-style:none; }
 .header{
   position:fixed;
   top:0; left:0; right:0;
-  z-index:900;
+  z-index:1100;
   background:rgba(255,255,255,.82);
   backdrop-filter:blur(16px);
   -webkit-backdrop-filter:blur(16px);
@@ -263,7 +263,7 @@ ul{ margin:0; padding:0; list-style:none; }
 }
 .nav-link{
   position:relative;
-  padding:9px 13px;
+  padding:9px 11px;
   font-size:14px;
   font-weight:600;
   color:var(--muted);
@@ -272,6 +272,7 @@ ul{ margin:0; padding:0; list-style:none; }
   white-space:nowrap;
 }
 .nav-link:hover{ color:var(--cyan); background:var(--cyan-soft); }
+.nav-cta{ display:none; }
 
 .header-actions{
   display:flex;
@@ -1426,6 +1427,18 @@ ul{ margin:0; padding:0; list-style:none; }
   line-height:1.6;
 }
 .form-success.show{ display:block; }
+.form-success.is-error{
+  border-color:rgba(153,0,51,.35);
+  background:var(--burgundy-soft);
+  color:var(--burgundy);
+}
+.form-hp{
+  position:absolute;
+  left:-10000px;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}
 
 /* ============================================================
    14. ФУТЕР
@@ -1542,7 +1555,7 @@ ul{ margin:0; padding:0; list-style:none; }
   left:16px;
   right:16px;
   bottom:16px;
-  z-index:1100;
+  z-index:1050;
   display:flex;
   align-items:center;
   gap:18px;
@@ -1646,13 +1659,22 @@ ul{ margin:0; padding:0; list-style:none; }
 }
 
 body.modal-open{ overflow:hidden; }
+body.nav-open{
+  position:fixed;
+  left:0;
+  right:0;
+  width:100%;
+  overflow:hidden;
+}
 
 /* ============================================================
    16. АДАПТИВНОСТЬ
    ============================================================ */
-@media (max-width:1080px){
+@media (max-width:1280px){
   .nav{ gap:0; }
-  .nav-link{ padding:9px 9px; font-size:13px; }
+  .nav-link{ padding:9px 8px; font-size:13px; }
+}
+@media (max-width:1180px){
   .header-phone{ display:none; }
 }
 
@@ -1663,7 +1685,7 @@ body.modal-open{ overflow:hidden; }
   .about-grid{ gap:36px; }
 }
 
-@media (max-width:860px){
+@media (max-width:990px){
   .nav{
     position:fixed;
     top:76px;
@@ -1672,10 +1694,9 @@ body.modal-open{ overflow:hidden; }
     flex-direction:column;
     align-items:stretch;
     gap:4px;
+    z-index:1100;
     padding:16px 20px 24px;
-    background:rgba(255,255,255,.98);
-    backdrop-filter:blur(18px);
-    -webkit-backdrop-filter:blur(18px);
+    background:#fff;
     border-bottom:1px solid rgba(14,123,168,.18);
     box-shadow:0 24px 48px rgba(15,39,68,.12);
     transform:translateY(-14px);
@@ -1695,12 +1716,19 @@ body.modal-open{ overflow:hidden; }
     font-size:15px;
     border-radius:10px;
   }
+  .nav-cta{
+    display:flex;
+    width:100%;
+    margin-top:12px;
+  }
   .burger{ display:block; }
   .header-actions{ margin-left:auto; }
   .header-actions .btn{ display:none; }
   .header-inner{ gap:16px; }
   .logo-img{ height:42px; }
+}
 
+@media (max-width:860px){
   .section{ padding:72px 0; }
   .section-head{ margin-bottom:40px; }
   .hero{ padding:126px 0 76px; }
@@ -1768,6 +1796,7 @@ body.modal-open{ overflow:hidden; }
       <a href="#advantages" class="nav-link">Преимущества</a>
       <a href="#calc" class="nav-link">Калькулятор</a>
       <a href="#contacts" class="nav-link">Контакты</a>
+      <button type="button" class="btn btn--primary nav-cta" data-open-modal>Заказать звонок</button>
     </nav>
 
     <div class="header-actions">
@@ -2376,8 +2405,8 @@ body.modal-open{ overflow:hidden; }
     <!-- FAQ -->
     <div class="faq-wrap">
       <div class="faq-head reveal">
-        <span class="section-tag">FAQ для B2B</span>
-        <h2 class="section-title" style="font-size:clamp(24px,3.2vw,34px);">Частые вопросы <span>от подрядчиков</span></h2>
+        <span class="section-tag">FAQ</span>
+        <h2 class="section-title">Частые вопросы <span>от подрядчиков</span></h2>
       </div>
 
       <div class="faq-list reveal-group">
@@ -2595,6 +2624,7 @@ body.modal-open{ overflow:hidden; }
         </p>
 
         <form id="leadForm" novalidate>
+          <input type="text" class="form-hp" name="ph_check" tabindex="-1" autocomplete="off" aria-hidden="true">
 
           <div class="form-row">
             <div class="field">
@@ -2721,11 +2751,13 @@ body.modal-open{ overflow:hidden; }
 
     <h3 id="modalTitle">Заказать звонок</h3>
     <p>
-      Оставьте контакты — специалист завода PlastHard перезвонит
+      Оставьте контакты — специалист завода Пласт ХАРД перезвонит
       в течение 15 минут в рабочее время.
     </p>
 
     <form id="modalForm" novalidate>
+      <input type="text" class="form-hp" name="ph_check" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <input type="hidden" id="modalProduct" name="product" value="">
 
       <div class="field">
         <label for="modalName">Имя *</label>
@@ -2790,8 +2822,11 @@ body.modal-open{ overflow:hidden; }
   var burger = $('#burger');
   var nav    = $('#nav');
 
+  var navScrollY = 0;
+
   function onScrollHeader() {
-    if (window.scrollY > 20) {
+    var y = document.body.classList.contains('nav-open') ? navScrollY : window.scrollY;
+    if (y > 20) {
       header.classList.add('scrolled');
     } else {
       header.classList.remove('scrolled');
@@ -2800,24 +2835,49 @@ body.modal-open{ overflow:hidden; }
   window.addEventListener('scroll', onScrollHeader, { passive: true });
   onScrollHeader();
 
+  function lockPageScroll() {
+    navScrollY = window.scrollY || window.pageYOffset || 0;
+    document.body.style.top = '-' + navScrollY + 'px';
+    document.body.classList.add('nav-open');
+  }
+
+  function unlockPageScroll() {
+    document.body.classList.remove('nav-open');
+    document.body.style.top = '';
+    var root = document.documentElement;
+    var previous = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    window.scrollTo(0, navScrollY);
+    root.style.scrollBehavior = previous;
+  }
+
   function closeNav() {
     if (!nav || !burger) { return; }
+    var wasOpen = nav.classList.contains('open');
     nav.classList.remove('open');
     burger.classList.remove('open');
     burger.setAttribute('aria-expanded', 'false');
     burger.setAttribute('aria-label', 'Открыть меню');
+    if (wasOpen) { unlockPageScroll(); }
   }
 
   if (burger && nav) {
     burger.addEventListener('click', function () {
-      var isOpen = nav.classList.toggle('open');
+      var isOpen = !nav.classList.contains('open');
+      nav.classList.toggle('open', isOpen);
       burger.classList.toggle('open', isOpen);
       burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       burger.setAttribute('aria-label', isOpen ? 'Закрыть меню' : 'Открыть меню');
+      if (isOpen) { lockPageScroll(); }
+      else { unlockPageScroll(); }
     });
 
     $$('.nav-link', nav).forEach(function (link) {
       link.addEventListener('click', closeNav);
+    });
+
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 990) { closeNav(); }
     });
   }
 
@@ -3278,6 +3338,9 @@ body.modal-open{ overflow:hidden; }
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      if (successEl) {
+        successEl.classList.remove('show', 'is-error');
+      }
 
       var isValid = true;
 
@@ -3300,21 +3363,60 @@ body.modal-open{ overflow:hidden; }
         return;
       }
 
-      if (successEl) {
-        successEl.classList.add('show');
-        successEl.textContent = 'Спасибо! Заявка отправлена. Наш специалист свяжется с вами в течение одного рабочего дня.';
+      var submitBtn = $('button[type="submit"]', form);
+      var submitLabel = submitBtn ? submitBtn.textContent : '';
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Отправляем…';
       }
 
-      form.reset();
+      var payload = new FormData(form);
+      payload.set('form', form.id === 'modalForm' ? 'callback' : 'lead');
+      payload.set('consent', '1');
 
-      $$('.field', form).forEach(function (f) { f.classList.remove('error'); });
+      fetch('send.php', {
+        method: 'POST',
+        body: payload,
+        headers: { 'Accept': 'application/json' }
+      })
+        .then(function (res) {
+          return res.json().catch(function () { return { ok: false }; }).then(function (data) {
+            return res.ok && data && data.ok;
+          });
+        })
+        .catch(function () { return false; })
+        .then(function (sent) {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = submitLabel;
+          }
 
-      if (nameInput)  { nameInput.value = ''; }
-      if (phoneInput) { phoneInput.value = ''; }
+          if (!sent) {
+            if (successEl) {
+              successEl.textContent = 'Не удалось отправить заявку. Позвоните нам: +7 (902) 243-07-43';
+              successEl.classList.add('show', 'is-error');
+            }
+            return;
+          }
 
-      window.setTimeout(function () {
-        if (successEl) { successEl.classList.remove('show'); }
-      }, 7000);
+          var productInput = form.querySelector('[name="product"]');
+          var productValue = productInput ? productInput.value : '';
+          form.reset();
+          if (productInput) { productInput.value = productValue; }
+          $$('.field', form).forEach(function (f) { f.classList.remove('error'); });
+          if (consentWrap) { consentWrap.classList.remove('error'); }
+          if (consentError) { consentError.style.display = 'none'; }
+
+          if (successEl) {
+            successEl.textContent = form.id === 'modalForm'
+              ? 'Спасибо! Мы свяжемся с вами в ближайшее время.'
+              : 'Спасибо! Заявка отправлена. Наш специалист свяжется с вами в течение одного рабочего дня.';
+            successEl.classList.add('show');
+            window.setTimeout(function () {
+              successEl.classList.remove('show');
+            }, 7000);
+          }
+        });
     });
   }
 
@@ -3351,6 +3453,11 @@ body.modal-open{ overflow:hidden; }
       modalTitle.textContent = productName
         ? 'Заявка: ' + productName
         : 'Заказать звонок';
+    }
+
+    var modalProduct = $('#modalProduct');
+    if (modalProduct) {
+      modalProduct.value = productName || '';
     }
 
     var firstInput = $('#modalName');
@@ -3501,7 +3608,7 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
     group.add(model);
 
     bagSize = size;
-    group.scale.setScalar(1.1);
+    group.scale.setScalar(1.21);
     model.traverse(function (obj) {
       if (!obj.isMesh) { return; }
       var mats = Array.isArray(obj.material) ? obj.material : [obj.material];
