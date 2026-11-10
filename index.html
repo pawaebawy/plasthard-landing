@@ -436,22 +436,14 @@ ul{ margin:0; padding:0; list-style:none; }
 .hero-stat{
   flex:1 1 130px;
   min-width:130px;
-  padding:18px 20px;
-  border:1px solid rgba(15,39,68,.08);
-  border-radius:14px;
-  background:#fff;
-  box-sizing:border-box;
-  box-shadow:var(--shadow-sm);
-  transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
-}
-.hero-stat:hover{
-  transform:translateY(-4px);
-  box-shadow:var(--shadow-md);
-  border-color:rgba(14,123,168,.3);
+  padding:0;
+  border:0;
+  background:none;
+  box-shadow:none;
 }
 .hero-stat b{
   display:block;
-  font-size:25px;
+  font-size:22px;
   font-weight:800;
   color:var(--cyan);
   letter-spacing:-.03em;
@@ -605,7 +597,13 @@ ul{ margin:0; padding:0; list-style:none; }
 .slider-viewport{
   overflow:hidden;
   border-radius:var(--radius);
-  padding:16px 0 88px;
+  padding:8px 0 20px;
+  touch-action:pan-y;
+  cursor:grab;
+}
+.slider-viewport.is-dragging{
+  cursor:grabbing;
+  user-select:none;
 }
 .slider-track{
   display:flex;
@@ -625,12 +623,14 @@ ul{ margin:0; padding:0; list-style:none; }
   display:flex;
   flex-direction:column;
   box-shadow:var(--shadow-sm);
-  transition:border-color .35s ease, box-shadow .35s ease, transform .35s ease;
+  transition:border-color .35s ease, box-shadow .35s ease;
 }
 .product-card:hover{
-  border-color:rgba(14,123,168,.35);
-  box-shadow:var(--shadow-lg);
-  transform:translateY(-6px);
+  border-color:var(--cyan);
+  box-shadow:inset 0 0 0 1px var(--cyan);
+}
+.product-card:hover .product-visual img{
+  transform:scale(1.05);
 }
 
 .product-visual{
@@ -651,6 +651,7 @@ ul{ margin:0; padding:0; list-style:none; }
   object-fit:cover;
   object-position:center;
   display:block;
+  transition:transform .45s ease;
 }
 .product-visual::before{
   content:"";
@@ -775,11 +776,10 @@ ul{ margin:0; padding:0; list-style:none; }
   flex-shrink:0;
 }
 .slider-btn:hover:not(:disabled){
-  background:var(--burgundy);
-  border-color:var(--burgundy-hover);
+  background:var(--cyan);
+  border-color:var(--cyan);
   color:#fff;
-  transform:scale(1.07);
-  box-shadow:0 12px 26px rgba(153,0,51,.28);
+  box-shadow:0 8px 20px rgba(14,123,168,.28);
 }
 .slider-btn:disabled{ opacity:.35; cursor:not-allowed; }
 .slider-dots{
@@ -830,7 +830,9 @@ ul{ margin:0; padding:0; list-style:none; }
 }
 .scheme-visual[data-scene="house"] .scheme-scene--house,
 .scheme-visual[data-scene="flat"] .scheme-scene--flat,
-.scheme-visual[data-scene="banya"] .scheme-scene--banya{ display:block; }
+.scheme-visual[data-scene="banya"] .scheme-scene--banya,
+.scheme-visual[data-scene="tent"] .scheme-scene--tent,
+.scheme-visual[data-scene="custom"] .scheme-scene--custom{ display:block; }
 
 .zone{
   fill:#ffffff;
@@ -894,26 +896,39 @@ ul{ margin:0; padding:0; list-style:none; }
   margin-bottom:22px;
   flex:1 1 auto;
 }
+.scheme-products{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-bottom:22px;
+}
 .scheme-product{
   display:inline-flex;
+  flex-wrap:wrap;
   align-items:center;
-  gap:10px;
-  align-self:flex-start;
-  padding:11px 20px;
+  justify-content:center;
+  max-width:100%;
+  gap:4px;
+  padding:10px 14px;
   border-radius:100px;
   background:var(--cyan-soft);
   border:1px solid rgba(14,123,168,.32);
   color:var(--cyan);
   font-weight:800;
-  font-size:14px;
-  margin-bottom:22px;
+  font-size:13px;
+  line-height:1.3;
+  text-align:center;
 }
+.scheme-product span{ white-space:nowrap; }
 .scheme-tabs{
   display:flex;
   flex-wrap:wrap;
   gap:10px;
-  margin-bottom:22px;
+  margin-bottom:28px;
 }
+.scheme-tabs:not(.is-expanded) .scheme-tab--extra:not(.is-kept){ display:none; }
 .scheme-tab{
   padding:10px 18px;
   border-radius:100px;
@@ -927,13 +942,31 @@ ul{ margin:0; padding:0; list-style:none; }
   box-sizing:border-box;
   box-shadow:var(--shadow-sm);
 }
+.scheme-tab--wide{
+  max-width:100%;
+  white-space:normal;
+  text-align:center;
+  line-height:1.35;
+}
 .scheme-tab:hover{ color:var(--cyan); border-color:rgba(14,123,168,.5); }
 .scheme-tab.active{
-  background:var(--burgundy);
-  border-color:var(--burgundy-hover);
+  background:var(--cyan);
+  border-color:var(--cyan);
   color:#fff;
-  box-shadow:0 8px 20px rgba(153,0,51,.24);
+  box-shadow:0 8px 20px rgba(14,123,168,.28);
 }
+.scheme-more{
+  padding:10px 18px;
+  border-radius:100px;
+  border:1px dashed rgba(14,123,168,.45);
+  background:transparent;
+  color:var(--cyan);
+  font-size:13.5px;
+  font-weight:700;
+  cursor:pointer;
+  box-sizing:border-box;
+}
+.scheme-more:hover{ border-color:var(--cyan); background:var(--cyan-soft); }
 
 /* ============================================================
    10. ПРЕИМУЩЕСТВА
@@ -1121,7 +1154,7 @@ ul{ margin:0; padding:0; list-style:none; }
   content:"";
   position:absolute;
   top:50%;
-  right:-20px;
+  right:-16px;
   z-index:2;
   width:12px;
   height:12px;
@@ -1426,8 +1459,8 @@ ul{ margin:0; padding:0; list-style:none; }
   transition:border-color .3s ease, background .3s ease, box-shadow .3s ease;
 }
 .faq-item.open{
-  border-color:rgba(14,123,168,.4);
-  box-shadow:var(--shadow-md);
+  border-color:var(--cyan);
+  box-shadow:0 8px 20px rgba(14,123,168,.28);
 }
 .faq-q{
   width:100%;
@@ -1449,6 +1482,11 @@ ul{ margin:0; padding:0; list-style:none; }
   transition:color .25s ease;
 }
 .faq-q:hover{ color:var(--cyan); }
+.faq-item.open .faq-q{
+  background:var(--cyan);
+  color:#fff;
+}
+.faq-item.open .faq-q:hover{ color:#fff; }
 .faq-icon{
   flex-shrink:0;
   width:30px; height:30px;
@@ -1562,22 +1600,25 @@ ul{ margin:0; padding:0; list-style:none; }
   min-height:44px;
   padding:10px 16px;
   border-radius:12px;
-  border:1px solid rgba(15,39,68,.14);
+  border:1px solid rgba(14,123,168,.4);
   background:#fff;
-  color:var(--text);
+  color:var(--cyan);
   font-size:14px;
   font-weight:700;
   line-height:20px;
   text-decoration:none;
   box-shadow:var(--shadow-sm);
-  transition:transform .25s cubic-bezier(.22,.75,.28,1), border-color .25s ease, box-shadow .25s ease;
+  transition:transform .25s ease, background .25s ease, box-shadow .25s ease, border-color .25s ease, color .25s ease;
 }
 .messenger-btn svg{ flex-shrink:0; }
 .messenger-btn:hover{
+  background:var(--cyan-soft);
+  color:var(--cyan);
+  border-color:var(--cyan);
   transform:translateY(-2px);
-  border-color:rgba(14,123,168,.45);
   box-shadow:var(--shadow-md);
 }
+.messenger-btn:active{ transform:translateY(0); }
 
 .form-card{
   flex:1 1 420px;
@@ -2020,7 +2061,7 @@ body.nav-open{
   .container{ padding:0 18px; }
   .header-inner{ padding:0 18px; }
   .hero-stats{ gap:10px; }
-  .hero-stat{ flex:1 1 calc(50% - 5px); min-width:0; padding:16px; }
+  .hero-stat{ flex:1 1 calc(50% - 5px); min-width:0; }
   .hero-actions .btn{ width:100%; }
   .about-facts{ grid-template-columns:1fr; }
   .audience-grid{ grid-template-columns:1fr; }
@@ -2032,7 +2073,7 @@ body.nav-open{
 
 @media (max-width:480px){
   .hero-title{ font-size:31px; }
-  .hero-stat b{ font-size:21px; }
+  .hero-stat b{ font-size:22px; }
   .adv-card{ padding:26px 22px; }
   .contact-item{ gap:13px; }
   .contact-ico{ width:40px; height:40px; }
@@ -2105,7 +2146,7 @@ body.nav-open{
         </h1>
 
         <p class="hero-sub">
-          <strong>Высокоэффективный экологичный утеплитель PlastHard</strong> напрямую
+          <strong>Высокоэффективный экологичный утеплитель Пласт ХАРД</strong> напрямую
           от завода-производителя ТД «Русхимволокно» в Иваново. Полиэфирное волокно
           без формальдегида, фенола и летучих клеев — безопасно для людей и конструкций.
         </p>
@@ -2269,7 +2310,7 @@ body.nav-open{
 
     <div class="section-head reveal">
       <span class="section-tag">Продукция</span>
-      <h2 class="section-title">Три материала — <span>под задачу объекта</span></h2>
+      <h2 class="section-title">Четыре материала — <span>под задачу объекта</span></h2>
       <p class="section-sub">
         Теплоизоляция вертикальных конструкций, шумопоглощающие плиты
         и межвенцовый утеплитель для деревянных домов.
@@ -2282,12 +2323,12 @@ body.nav-open{
 
           <article class="product-card">
             <div class="product-visual">
-              <img src="assets/products/plast-hard.webp" alt="Плита Пласт ХАРД" width="640" height="420">
+              <img src="assets/products/plast-hard.webp" alt="Плита Пласт ХАРД Стандарт" width="640" height="420">
             </div>
             <div class="product-body">
               <h3 class="product-name">
                 <small>Теплоизоляция</small>
-                Пласт ХАРД
+                Пласт ХАРД Стандарт
               </h3>
               <p class="product-desc">
                 Теплоизоляция для вертикальных конструкций из 100% полиэфирного
@@ -2298,8 +2339,37 @@ body.nav-open{
                 <span class="spec-pill">100% полиэфир</span>
                 <span class="spec-pill">Без фенола</span>
                 <span class="spec-pill">Стены и фасады</span>
+                <span class="spec-pill">Плита и рулон</span>
+                <span class="spec-pill">50-200 мм</span>
               </div>
-              <button type="button" class="btn btn--ghost btn--block" data-open-modal data-product="Пласт ХАРД">
+              <button type="button" class="btn btn--primary btn--block" data-open-modal data-product="Пласт ХАРД Стандарт">
+                Запросить цену
+              </button>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-visual">
+              <img src="assets/products/plast-hard.webp" alt="Плита Пласт ХАРД Улучшенный" width="640" height="420">
+            </div>
+            <div class="product-body">
+              <h3 class="product-name">
+                <small>Теплоизоляция</small>
+                Пласт ХАРД Улучшенный
+              </h3>
+              <p class="product-desc">
+                Теплоизоляция для вертикальных конструкций из 100% полиэфирного
+                волокна. Скрепляется термически, без фенолформальдегидных смол.
+                Плотность подбирается под проект.
+              </p>
+              <div class="product-specs">
+                <span class="spec-pill">100% полиэфир</span>
+                <span class="spec-pill">Без фенола</span>
+                <span class="spec-pill">Стены и фасады</span>
+                <span class="spec-pill">Плита</span>
+                <span class="spec-pill">50-100 мм</span>
+              </div>
+              <button type="button" class="btn btn--primary btn--block" data-open-modal data-product="Пласт ХАРД Улучшенный">
                 Запросить цену
               </button>
             </div>
@@ -2324,7 +2394,7 @@ body.nav-open{
                 <span class="spec-pill">Средние и высокие частоты</span>
                 <span class="spec-pill">Держит форму</span>
               </div>
-              <button type="button" class="btn btn--ghost btn--block" data-open-modal data-product="Пласт ХАРД ШУМ">
+              <button type="button" class="btn btn--primary btn--block" data-open-modal data-product="Пласт ХАРД ШУМ">
                 Запросить цену
               </button>
             </div>
@@ -2349,7 +2419,7 @@ body.nav-open{
                 <span class="spec-pill">Без клея</span>
                 <span class="spec-pill">Срубы и брус</span>
               </div>
-              <button type="button" class="btn btn--ghost btn--block" data-open-modal data-product="Межвенцовый утеплитель синтетический">
+              <button type="button" class="btn btn--primary btn--block" data-open-modal data-product="Межвенцовый утеплитель синтетический">
                 Запросить цену
               </button>
             </div>
@@ -2389,6 +2459,17 @@ body.nav-open{
         Наведите курсор на зону дома или выберите её кнопкой ниже — мы подскажем
         подходящую марку PlastHard и рекомендуемую толщину.
       </p>
+    </div>
+
+    <div class="scheme-tabs" id="schemeTabs">
+      <button type="button" class="scheme-tab" data-tab="roof">Кровля</button>
+      <button type="button" class="scheme-tab" data-tab="wall">Стены</button>
+      <button type="button" class="scheme-tab active" data-tab="floor">Полы</button>
+      <button type="button" class="scheme-tab scheme-tab--extra" data-tab="flat">Квартира</button>
+      <button type="button" class="scheme-tab scheme-tab--extra" data-tab="banya">Дача и баня</button>
+      <button type="button" class="scheme-tab scheme-tab--extra scheme-tab--wide" data-tab="tent">Каркасно-тентовые и купольные конструкции</button>
+      <button type="button" class="scheme-tab scheme-tab--extra" data-tab="custom">Нестандартное применение</button>
+      <button type="button" class="scheme-more" id="schemeMore" aria-expanded="false">Показать еще</button>
     </div>
 
     <div class="scheme-grid">
@@ -2549,8 +2630,6 @@ body.nav-open{
           <rect x="168" y="86" width="292" height="326" fill="url(#aptWall)" stroke="#0e7ba8" stroke-width="1.8"/>
           <rect x="154" y="70" width="320" height="22" rx="3" fill="#ffffff" stroke="#0e7ba8" stroke-width="1.8"/>
           <rect x="176" y="96" width="276" height="16" fill="url(#aptHatch)" opacity="0.55"/>
-          <rect x="154" y="100" width="16" height="312" fill="url(#aptHatch)" opacity="0.75"/>
-          <rect x="154" y="100" width="16" height="312" fill="none" stroke="#0e7ba8" stroke-width="1.4"/>
 
           <line x1="168" y1="176" x2="460" y2="176" stroke="rgba(14,123,168,0.4)" stroke-width="1.4"/>
           <line x1="168" y1="254" x2="460" y2="254" stroke="rgba(14,123,168,0.4)" stroke-width="1.4"/>
@@ -2615,7 +2694,7 @@ body.nav-open{
           <line class="ground-line" x1="460" y1="412" x2="584" y2="412"/>
         </svg>
 
-        <svg class="scheme-svg scheme-scene scheme-scene--banya" viewBox="0 0 620 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Иллюстрация бани">
+        <svg class="scheme-svg scheme-scene scheme-scene--banya" viewBox="0 0 620 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Дача и баня">
           <defs>
             <linearGradient id="banyaSky" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stop-color="#f7fbfe"/>
@@ -2635,85 +2714,209 @@ body.nav-open{
           </defs>
 
           <rect width="620" height="480" fill="url(#banyaSky)"/>
-          <circle cx="520" cy="78" r="36" fill="rgba(48,177,232,0.16)"/>
-          <circle cx="520" cy="78" r="22" fill="rgba(48,177,232,0.18)"/>
+          <circle cx="300" cy="68" r="32" fill="rgba(48,177,232,0.16)"/>
+          <circle cx="300" cy="68" r="18" fill="rgba(48,177,232,0.18)"/>
           <g fill="rgba(255,255,255,0.85)">
-            <ellipse cx="132" cy="64" rx="32" ry="14"/>
-            <ellipse cx="158" cy="58" rx="22" ry="15"/>
-            <ellipse cx="110" cy="62" rx="18" ry="11"/>
+            <ellipse cx="92" cy="62" rx="28" ry="12"/>
+            <ellipse cx="116" cy="56" rx="20" ry="13"/>
+            <ellipse cx="72" cy="60" rx="16" ry="10"/>
           </g>
 
           <rect x="0" y="412" width="620" height="68" fill="#e3eef6"/>
-          <ellipse cx="320" cy="418" rx="188" ry="11" fill="rgba(15,39,68,0.07)"/>
-
-          <g fill="rgba(255,255,255,0.92)" stroke="rgba(14,123,168,0.4)" stroke-width="1.2">
-            <ellipse cx="230" cy="86" rx="14" ry="8"/>
-            <ellipse cx="248" cy="68" rx="18" ry="10"/>
-            <ellipse cx="222" cy="50" rx="16" ry="9"/>
-          </g>
-          <rect x="214" y="108" width="24" height="86" rx="1" fill="#f7fbfe" stroke="#0e7ba8" stroke-width="1.6"/>
-          <rect x="206" y="100" width="40" height="12" rx="2" fill="#ffffff" stroke="#0e7ba8" stroke-width="1.6"/>
-
-          <polygon points="146,252 310,124 474,252" fill="url(#banyaWall)" stroke="#0e7ba8" stroke-width="1.8"/>
-          <polygon points="206,236 310,168 414,236" fill="url(#banyaHatch)" opacity="0.5"/>
-          <polygon points="146,252 178,252 178,264 162,264" fill="rgba(14,123,168,0.16)"/>
-          <polygon points="474,252 442,252 442,264 458,264" fill="rgba(14,123,168,0.16)"/>
-
-          <rect x="292" y="186" width="36" height="32" rx="2" fill="#ffffff" stroke="#0e7ba8" stroke-width="1.6"/>
-          <rect x="298" y="192" width="10" height="10" fill="url(#banyaGlass)"/>
-          <rect x="312" y="192" width="10" height="10" fill="url(#banyaGlass)"/>
-          <rect x="298" y="204" width="10" height="8" fill="url(#banyaGlass)"/>
-          <rect x="312" y="204" width="10" height="8" fill="url(#banyaGlass)"/>
-
-          <rect x="178" y="252" width="264" height="160" fill="url(#banyaWall)" stroke="#0e7ba8" stroke-width="1.8"/>
-          <line x1="178" y1="272" x2="442" y2="272" stroke="rgba(14,123,168,0.4)" stroke-width="1.3"/>
-          <line x1="178" y1="292" x2="442" y2="292" stroke="rgba(14,123,168,0.4)" stroke-width="1.3"/>
-          <line x1="178" y1="312" x2="442" y2="312" stroke="rgba(14,123,168,0.4)" stroke-width="1.3"/>
-          <line x1="178" y1="332" x2="442" y2="332" stroke="rgba(14,123,168,0.4)" stroke-width="1.3"/>
-          <line x1="178" y1="352" x2="442" y2="352" stroke="rgba(14,123,168,0.4)" stroke-width="1.3"/>
-          <line x1="178" y1="372" x2="442" y2="372" stroke="rgba(14,123,168,0.4)" stroke-width="1.3"/>
-          <line x1="178" y1="392" x2="442" y2="392" stroke="rgba(14,123,168,0.4)" stroke-width="1.3"/>
-          <rect x="178" y="384" width="264" height="28" fill="url(#banyaHatch)" opacity="0.45"/>
-
-          <rect x="366" y="292" width="48" height="42" rx="3" fill="#ffffff" stroke="#0e7ba8" stroke-width="1.8"/>
-          <rect x="372" y="298" width="16" height="14" fill="url(#banyaGlass)"/>
-          <rect x="392" y="298" width="16" height="14" fill="url(#banyaGlass)"/>
-          <rect x="372" y="316" width="16" height="12" fill="url(#banyaGlass)"/>
-          <rect x="392" y="316" width="16" height="12" fill="url(#banyaGlass)"/>
-          <rect x="374" y="332" width="32" height="5" rx="1" fill="#d5e3ee"/>
+          <ellipse cx="300" cy="418" rx="240" ry="11" fill="rgba(15,39,68,0.07)"/>
 
           <g>
-            <rect x="248" y="340" width="44" height="72" rx="3" fill="#fff7f8" stroke="#990033" stroke-width="1.8"/>
-            <rect x="254" y="350" width="32" height="24" rx="2" fill="rgba(153,0,51,0.08)" stroke="rgba(153,0,51,0.35)" stroke-width="1.3"/>
-            <rect x="254" y="378" width="32" height="24" rx="2" fill="rgba(153,0,51,0.08)" stroke="rgba(153,0,51,0.35)" stroke-width="1.3"/>
-            <circle cx="282" cy="392" r="2.6" fill="#990033"/>
-            <rect x="236" y="406" width="68" height="6" rx="1" fill="#d7e3ee"/>
+            <polygon points="52,246 166,124 280,246" fill="url(#banyaWall)" stroke="#0e7ba8" stroke-width="1.8" stroke-linejoin="round"/>
+            <polygon points="108,228 166,168 224,228" fill="url(#banyaHatch)" opacity="0.4"/>
+            <rect x="150" y="176" width="32" height="26" rx="2" fill="#ffffff" stroke="#0e7ba8" stroke-width="1.5"/>
+            <rect x="156" y="182" width="8" height="8" fill="url(#banyaGlass)"/>
+            <rect x="168" y="182" width="8" height="8" fill="url(#banyaGlass)"/>
+            <rect x="156" y="192" width="8" height="6" fill="url(#banyaGlass)"/>
+            <rect x="168" y="192" width="8" height="6" fill="url(#banyaGlass)"/>
+            <rect x="78" y="246" width="176" height="154" fill="url(#banyaWall)" stroke="#0e7ba8" stroke-width="1.8"/>
+            <rect x="96" y="278" width="42" height="36" rx="2" fill="#ffffff" stroke="#0e7ba8" stroke-width="1.6"/>
+            <rect x="102" y="284" width="12" height="12" fill="url(#banyaGlass)"/>
+            <rect x="118" y="284" width="12" height="12" fill="url(#banyaGlass)"/>
+            <rect x="102" y="298" width="12" height="10" fill="url(#banyaGlass)"/>
+            <rect x="118" y="298" width="12" height="10" fill="url(#banyaGlass)"/>
+            <rect x="186" y="278" width="42" height="36" rx="2" fill="#ffffff" stroke="#0e7ba8" stroke-width="1.6"/>
+            <rect x="192" y="284" width="12" height="12" fill="url(#banyaGlass)"/>
+            <rect x="208" y="284" width="12" height="12" fill="url(#banyaGlass)"/>
+            <rect x="192" y="298" width="12" height="10" fill="url(#banyaGlass)"/>
+            <rect x="208" y="298" width="12" height="10" fill="url(#banyaGlass)"/>
+            <rect x="138" y="332" width="40" height="68" rx="3" fill="#fff7f8" stroke="#990033" stroke-width="1.8"/>
+            <rect x="144" y="340" width="28" height="22" rx="2" fill="rgba(153,0,51,0.08)" stroke="rgba(153,0,51,0.35)" stroke-width="1.2"/>
+            <rect x="144" y="366" width="28" height="22" rx="2" fill="rgba(153,0,51,0.08)" stroke="rgba(153,0,51,0.35)" stroke-width="1.2"/>
+            <circle cx="168" cy="380" r="2.4" fill="#990033"/>
+            <rect x="126" y="400" width="64" height="6" rx="1" fill="#d7e3ee"/>
           </g>
 
-          <g fill="#f7fbfe" stroke="#0e7ba8" stroke-width="1.4">
-            <rect x="468" y="400" width="62" height="12" rx="6"/>
-            <rect x="474" y="386" width="52" height="12" rx="6"/>
-            <rect x="482" y="372" width="40" height="12" rx="6"/>
+          <g>
+            <polygon points="352,286 470,176 588,286" fill="url(#banyaWall)" stroke="#0e7ba8" stroke-width="1.8" stroke-linejoin="round"/>
+            <rect x="376" y="286" width="188" height="114" fill="url(#banyaWall)" stroke="#0e7ba8" stroke-width="1.8"/>
+            <line x1="376" y1="306" x2="564" y2="306" stroke="rgba(14,123,168,0.4)" stroke-width="1.3"/>
+            <line x1="376" y1="326" x2="564" y2="326" stroke="rgba(14,123,168,0.4)" stroke-width="1.3"/>
+            <line x1="376" y1="346" x2="564" y2="346" stroke="rgba(14,123,168,0.4)" stroke-width="1.3"/>
+            <line x1="376" y1="366" x2="564" y2="366" stroke="rgba(14,123,168,0.4)" stroke-width="1.3"/>
+            <line x1="376" y1="386" x2="564" y2="386" stroke="rgba(14,123,168,0.4)" stroke-width="1.3"/>
+            <rect x="456" y="148" width="20" height="58" rx="1" fill="#f7fbfe" stroke="#0e7ba8" stroke-width="1.6"/>
+            <rect x="448" y="140" width="36" height="12" rx="2" fill="#ffffff" stroke="#0e7ba8" stroke-width="1.6"/>
+            <g fill="rgba(255,255,255,0.92)" stroke="rgba(14,123,168,0.4)" stroke-width="1.2">
+              <ellipse cx="478" cy="118" rx="14" ry="8"/>
+              <ellipse cx="496" cy="102" rx="16" ry="9"/>
+              <ellipse cx="468" cy="88" rx="14" ry="8"/>
+            </g>
+            <rect x="470" y="312" width="40" height="32" rx="2" fill="#ffffff" stroke="#0e7ba8" stroke-width="1.6"/>
+            <rect x="476" y="318" width="12" height="10" fill="url(#banyaGlass)"/>
+            <rect x="492" y="318" width="12" height="10" fill="url(#banyaGlass)"/>
+            <rect x="476" y="330" width="12" height="8" fill="url(#banyaGlass)"/>
+            <rect x="492" y="330" width="12" height="8" fill="url(#banyaGlass)"/>
+            <rect x="400" y="336" width="38" height="64" rx="3" fill="#fff7f8" stroke="#990033" stroke-width="1.8"/>
+            <rect x="406" y="344" width="26" height="20" rx="2" fill="rgba(153,0,51,0.08)" stroke="rgba(153,0,51,0.35)" stroke-width="1.2"/>
+            <rect x="406" y="368" width="26" height="20" rx="2" fill="rgba(153,0,51,0.08)" stroke="rgba(153,0,51,0.35)" stroke-width="1.2"/>
+            <circle cx="428" cy="380" r="2.2" fill="#990033"/>
           </g>
 
-          <path d="M86 412V370" stroke="#8eabbf" stroke-width="5" stroke-linecap="round"/>
-          <path d="M86 378c-18 2-28-12-20-24-10-4-8-18 4-24 4-12 18-16 28-6 8-10 26-4 26 8 12 4 14 18 4 26 8 12-4 22-16 20-4 6-16 8-26 0z" fill="rgba(14,123,168,0.15)" stroke="#0e7ba8" stroke-width="1.4" stroke-linejoin="round"/>
+          <path d="M318 412V372" stroke="#8eabbf" stroke-width="5" stroke-linecap="round"/>
+          <path d="M318 380c-16 2-24-10-16-20-8-4-6-16 4-20 4-10 16-14 24-6 6-8 22-4 22 6 10 4 12 16 4 22 6 10-4 18-14 16-4 6-14 8-24 2z" fill="rgba(14,123,168,0.15)" stroke="#0e7ba8" stroke-width="1.4" stroke-linejoin="round"/>
 
-          <line class="ground-line" x1="28" y1="412" x2="146" y2="412"/>
-          <line class="ground-line" x1="474" y1="412" x2="592" y2="412"/>
+          <line class="ground-line" x1="28" y1="412" x2="78" y2="412"/>
+          <line class="ground-line" x1="564" y1="412" x2="592" y2="412"/>
+        </svg>
+
+        <svg class="scheme-svg scheme-scene scheme-scene--tent" viewBox="0 0 620 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ангар из металлоконструкций, вид сбоку">
+          <defs>
+            <linearGradient id="tentSky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#f7fbfe"/>
+              <stop offset="100%" stop-color="#e7f1f8"/>
+            </linearGradient>
+            <linearGradient id="tentCover" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#b7e4f6"/>
+              <stop offset="100%" stop-color="#7ec8ea"/>
+            </linearGradient>
+          </defs>
+
+          <rect width="620" height="480" fill="url(#tentSky)"/>
+          <circle cx="96" cy="78" r="34" fill="rgba(48,177,232,0.16)"/>
+          <circle cx="96" cy="78" r="20" fill="rgba(48,177,232,0.18)"/>
+          <g fill="rgba(255,255,255,0.85)">
+            <ellipse cx="470" cy="70" rx="34" ry="14"/>
+            <ellipse cx="498" cy="64" rx="24" ry="15"/>
+            <ellipse cx="446" cy="68" rx="18" ry="11"/>
+          </g>
+
+          <rect x="0" y="412" width="620" height="68" fill="#e3eef6"/>
+          <ellipse cx="314" cy="418" rx="230" ry="11" fill="rgba(15,39,68,0.07)"/>
+
+          <rect x="80" y="156" width="231" height="244" fill="url(#tentCover)"/>
+          <rect x="307" y="156" width="8" height="92" fill="#1c2833"/>
+
+          <g fill="none" stroke="#5e7688" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M72 156 H550" stroke-width="2.6"/>
+            <path d="M72 248 H550" stroke-width="2.2"/>
+            <path d="M64 400 H558" stroke-width="2.4"/>
+            <path d="M80 156 V400 M157 156 V400 M234 156 V400 M311 156 V400 M388 156 V400 M465 156 V400 M542 156 V400" stroke-width="2.2"/>
+            <path d="M80 248 L157 156 M80 156 L157 248" stroke-width="1.5"/>
+            <path d="M157 248 L234 156 M157 156 L234 248" stroke-width="1.5"/>
+            <path d="M234 248 L311 156 M234 156 L311 248" stroke-width="1.5"/>
+            <path d="M311 248 L388 156 M311 156 L388 248" stroke-width="1.5"/>
+            <path d="M388 248 L465 156 M388 156 L465 248" stroke-width="1.5"/>
+            <path d="M465 248 L542 156 M465 156 L542 248" stroke-width="1.5"/>
+            <path d="M80 312 H542 M80 356 H542" stroke-width="1.5"/>
+            <path d="M311 248 L388 400 M311 400 L388 248" stroke-width="1.6"/>
+            <path d="M465 248 L542 400 M465 400 L542 248" stroke-width="1.6"/>
+          </g>
+
+          <g fill="#eef4f8" stroke="#5e7688" stroke-width="1.5">
+            <rect x="70" y="396" width="20" height="8" rx="1"/>
+            <rect x="147" y="396" width="20" height="8" rx="1"/>
+            <rect x="224" y="396" width="20" height="8" rx="1"/>
+            <rect x="301" y="396" width="20" height="8" rx="1"/>
+            <rect x="378" y="396" width="20" height="8" rx="1"/>
+            <rect x="455" y="396" width="20" height="8" rx="1"/>
+            <rect x="532" y="396" width="20" height="8" rx="1"/>
+          </g>
+
+          <g>
+            <rect x="184" y="332" width="40" height="68" rx="2" fill="#fff7f8" stroke="#990033" stroke-width="1.8"/>
+            <rect x="190" y="340" width="28" height="24" rx="1.5" fill="rgba(153,0,51,0.08)" stroke="rgba(153,0,51,0.35)" stroke-width="1.2"/>
+            <rect x="190" y="368" width="28" height="22" rx="1.5" fill="rgba(153,0,51,0.08)" stroke="rgba(153,0,51,0.35)" stroke-width="1.2"/>
+            <circle cx="214" cy="384" r="2.4" fill="#990033"/>
+          </g>
+
+          <line class="ground-line" x1="28" y1="412" x2="70" y2="412"/>
+          <line class="ground-line" x1="558" y1="412" x2="592" y2="412"/>
+        </svg>
+
+        <svg class="scheme-svg scheme-scene scheme-scene--custom" viewBox="0 0 620 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Улей и теплица, вид сбоку">
+          <defs>
+            <linearGradient id="customSky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#f7fbfe"/>
+              <stop offset="100%" stop-color="#e7f1f8"/>
+            </linearGradient>
+            <linearGradient id="customGlass" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#f4fcff"/>
+              <stop offset="100%" stop-color="#c5e8f6"/>
+            </linearGradient>
+          </defs>
+
+          <rect width="620" height="480" fill="url(#customSky)"/>
+          <circle cx="300" cy="72" r="34" fill="rgba(48,177,232,0.16)"/>
+          <circle cx="300" cy="72" r="20" fill="rgba(48,177,232,0.18)"/>
+          <g fill="rgba(255,255,255,0.85)">
+            <ellipse cx="108" cy="78" rx="32" ry="14"/>
+            <ellipse cx="134" cy="72" rx="22" ry="14"/>
+            <ellipse cx="86" cy="76" rx="16" ry="10"/>
+          </g>
+
+          <rect x="0" y="412" width="620" height="68" fill="#e3eef6"/>
+          <ellipse cx="300" cy="418" rx="250" ry="11" fill="rgba(15,39,68,0.07)"/>
+
+          <g>
+            <polygon points="78,186 170,118 262,186" fill="#fff" stroke="#0e7ba8" stroke-width="1.7" stroke-linejoin="round"/>
+            <rect x="74" y="180" width="192" height="14" rx="2" fill="#eef6fb" stroke="#0e7ba8" stroke-width="1.6"/>
+            <rect x="96" y="194" width="148" height="70" fill="rgba(255,255,255,0.72)" stroke="#0e7ba8" stroke-width="1.7"/>
+            <line x1="96" y1="216" x2="244" y2="216" stroke="rgba(14,123,168,0.4)" stroke-width="1.2"/>
+            <rect x="96" y="272" width="148" height="92" fill="#fff" stroke="#0e7ba8" stroke-width="1.7"/>
+            <line x1="96" y1="302" x2="244" y2="302" stroke="rgba(14,123,168,0.4)" stroke-width="1.2"/>
+            <line x1="96" y1="332" x2="244" y2="332" stroke="rgba(14,123,168,0.4)" stroke-width="1.2"/>
+            <rect x="146" y="342" width="48" height="14" rx="3" fill="#fff7f8" stroke="#990033" stroke-width="1.6"/>
+            <rect x="128" y="364" width="84" height="8" rx="1" fill="#d7e6f1" stroke="#0e7ba8" stroke-width="1.3"/>
+            <rect x="88" y="364" width="164" height="12" rx="1" fill="#e7f1f8" stroke="#0e7ba8" stroke-width="1.5"/>
+            <rect x="104" y="376" width="16" height="24" rx="1" fill="#f7fbfe" stroke="#0e7ba8" stroke-width="1.4"/>
+            <rect x="220" y="376" width="16" height="24" rx="1" fill="#f7fbfe" stroke="#0e7ba8" stroke-width="1.4"/>
+            <g fill="#fff" stroke="#0e7ba8" stroke-width="1.2">
+              <ellipse cx="248" cy="330" rx="8" ry="4.5"/>
+              <ellipse cx="244" cy="324" rx="5.5" ry="3" fill="rgba(14,123,168,0.16)"/>
+              <ellipse cx="252" cy="325" rx="4.5" ry="2.6" fill="rgba(14,123,168,0.12)"/>
+              <ellipse cx="214" cy="312" rx="7" ry="4"/>
+              <ellipse cx="210" cy="307" rx="5" ry="2.8" fill="rgba(14,123,168,0.16)"/>
+              <ellipse cx="218" cy="308" rx="4" ry="2.4" fill="rgba(14,123,168,0.12)"/>
+            </g>
+          </g>
+
+          <g>
+            <path d="M332 400 V292 C332 188 392 146 452 146 C512 146 572 188 572 292 V400 Z" fill="url(#customGlass)" stroke="#0e7ba8" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M352 400 V304 C352 214 402 168 452 168 C502 168 552 214 552 304 V400" fill="none" stroke="rgba(14,123,168,0.55)" stroke-width="1.4"/>
+            <path d="M392 400 V286 C392 214 424 184 452 184 C480 184 512 214 512 286 V400" fill="none" stroke="rgba(14,123,168,0.4)" stroke-width="1.3"/>
+            <path d="M332 318 H572 M352 360 H552" fill="none" stroke="rgba(14,123,168,0.4)" stroke-width="1.3"/>
+            <rect x="424" y="312" width="56" height="88" rx="3" fill="#fff7f8" stroke="#990033" stroke-width="1.8"/>
+            <rect x="430" y="322" width="44" height="30" rx="2" fill="rgba(153,0,51,0.08)" stroke="rgba(153,0,51,0.35)" stroke-width="1.2"/>
+            <rect x="430" y="358" width="44" height="30" rx="2" fill="rgba(153,0,51,0.08)" stroke="rgba(153,0,51,0.35)" stroke-width="1.2"/>
+            <circle cx="468" cy="376" r="2.4" fill="#990033"/>
+            <path d="M392 392c8-18 14-18 20 0" fill="none" stroke="#0e7ba8" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M398 392c4-12 8-12 12 0" fill="rgba(14,123,168,0.16)" stroke="#0e7ba8" stroke-width="1.2"/>
+            <path d="M500 394c8-20 16-20 24 0" fill="none" stroke="#0e7ba8" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M508 394c5-12 10-12 14 0" fill="rgba(14,123,168,0.16)" stroke="#0e7ba8" stroke-width="1.2"/>
+          </g>
+
+          <line class="ground-line" x1="28" y1="412" x2="88" y2="412"/>
+          <line class="ground-line" x1="560" y1="412" x2="592" y2="412"/>
         </svg>
       </div>
 
       <!-- Информационная панель -->
       <div class="scheme-panel reveal">
-        <div class="scheme-tabs" id="schemeTabs">
-          <button type="button" class="scheme-tab" data-tab="roof">Кровля</button>
-          <button type="button" class="scheme-tab" data-tab="wall">Стены</button>
-          <button type="button" class="scheme-tab active" data-tab="floor">Полы</button>
-          <button type="button" class="scheme-tab" data-tab="flat">Квартира</button>
-          <button type="button" class="scheme-tab" data-tab="banya">Баня</button>
-        </div>
-
         <div class="scheme-panel-inner" id="schemePanel">
           <div class="scheme-hint">Рекомендация</div>
           <h3 class="scheme-title" id="schemeTitle">Полы и фундамент</h3>
@@ -2723,7 +2926,10 @@ body.nav-open{
             и мебели, не сминается и не теряет толщину. Рекомендуемая толщина —
             150–200 мм для жилых помещений и 100 мм для неотапливаемых.
           </p>
-          <div class="scheme-product" id="schemeProduct">PlastHard Solid · 150–200 мм</div>
+          <div class="scheme-products" id="schemeProducts">
+            <div class="scheme-product"><span>Пласт ХАРД Стандарт ·</span><span>50-200 мм</span></div>
+            <div class="scheme-product"><span>Пласт ХАРД Улучшенный ·</span><span>50-100 мм</span></div>
+          </div>
           <button type="button" class="btn btn--primary" data-open-modal>
             Подобрать материал с инженером
           </button>
@@ -3360,7 +3566,8 @@ body.nav-open{
 
       <div class="footer-col">
         <h5>Продукция</h5>
-        <a href="#products">Пласт ХАРД</a>
+        <a href="#products">Пласт ХАРД Стандарт</a>
+        <a href="#products">Пласт ХАРД Улучшенный</a>
         <a href="#products">Пласт ХАРД ШУМ</a>
         <a href="#products">Межвенцовый утеплитель синтетический</a>
       </div>
@@ -3651,6 +3858,14 @@ body.nav-open{
       }
     }
 
+    function getStep() {
+      if (!cards.length) { return 0; }
+      var cardRect = cards[0].getBoundingClientRect();
+      var trackStyle = window.getComputedStyle(track);
+      var gap = parseFloat(trackStyle.columnGap || trackStyle.gap) || 0;
+      return cardRect.width + gap;
+    }
+
     function updateSlider() {
       var maxIndex = getMaxIndex();
       if (slideIndex > maxIndex) { slideIndex = maxIndex; }
@@ -3658,12 +3873,8 @@ body.nav-open{
 
       if (cards.length === 0) { return; }
 
-      var cardRect = cards[0].getBoundingClientRect();
-      var trackStyle = window.getComputedStyle(track);
-      var gap = parseFloat(trackStyle.columnGap || trackStyle.gap) || 0;
-      var step = cardRect.width + gap;
-
-      track.style.transform = 'translateX(' + (-slideIndex * step) + 'px)';
+      track.style.transition = '';
+      track.style.transform = 'translateX(' + (-slideIndex * getStep()) + 'px)';
 
       prevBtn.disabled = slideIndex <= 0;
       nextBtn.disabled = slideIndex >= maxIndex;
@@ -3704,6 +3915,78 @@ body.nav-open{
       }, 120);
     });
 
+    var viewport = track.closest('.slider-viewport');
+    var drag = null;
+    var blockClick = false;
+
+    function beginDrag(e) {
+      if (!viewport || getMaxIndex() === 0) { return; }
+      if (e.pointerType === 'mouse' && e.button !== 0) { return; }
+      if (e.target.closest('button, a, input, textarea, select, label')) { return; }
+      drag = {
+        id: e.pointerId,
+        x: e.clientX,
+        y: e.clientY,
+        base: -slideIndex * getStep(),
+        step: getStep(),
+        axis: ''
+      };
+    }
+
+    function moveDrag(e) {
+      if (!drag || drag.id !== e.pointerId) { return; }
+      var dx = e.clientX - drag.x;
+      var dy = e.clientY - drag.y;
+      if (!drag.axis) {
+        if (Math.abs(dx) < 8 && Math.abs(dy) < 8) { return; }
+        if (Math.abs(dy) > Math.abs(dx)) {
+          drag = null;
+          return;
+        }
+        drag.axis = 'x';
+        track.style.transition = 'none';
+        viewport.classList.add('is-dragging');
+        try {
+          if (viewport.setPointerCapture) { viewport.setPointerCapture(e.pointerId); }
+        } catch (err) {}
+      }
+      var minX = -getMaxIndex() * drag.step;
+      var x = drag.base + dx;
+      if (x > 0) { x *= 0.3; }
+      if (x < minX) { x = minX + (x - minX) * 0.3; }
+      track.style.transform = 'translateX(' + x + 'px)';
+    }
+
+    function endDrag(e) {
+      if (!drag || drag.id !== e.pointerId) { return; }
+      var dx = e.clientX - drag.x;
+      var axis = drag.axis;
+      var step = drag.step;
+      drag = null;
+      viewport.classList.remove('is-dragging');
+      track.style.transition = '';
+      if (axis !== 'x') { return; }
+      blockClick = true;
+      var threshold = Math.min(72, step * 0.2);
+      if (dx <= -threshold) { goTo(slideIndex + 1); }
+      else if (dx >= threshold) { goTo(slideIndex - 1); }
+      else { updateSlider(); }
+    }
+
+    if (viewport) {
+      viewport.addEventListener('pointerdown', beginDrag);
+      viewport.addEventListener('pointermove', moveDrag);
+      viewport.addEventListener('pointerup', endDrag);
+      viewport.addEventListener('pointercancel', endDrag);
+      viewport.addEventListener('dragstart', function (e) { e.preventDefault(); });
+      viewport.addEventListener('click', function (e) {
+        if (!blockClick) { return; }
+        blockClick = false;
+        e.preventDefault();
+        e.stopPropagation();
+      }, true);
+    }
+
     buildDots();
     updateSlider();
     window.setTimeout(updateSlider, 220);
@@ -3715,38 +3998,46 @@ body.nav-open{
   var SCHEME_DATA = {
     roof: {
       title: 'Кровля и мансарда',
-      product: 'PlastHard Solid · 100–150 мм',
       desc: 'Для скатных кровель и утепления мансарды применяются плиты PlastHard Solid толщиной 100–150 мм. Жёсткая структура не сползает по скату, а низкая теплопроводность позволяет сохранить полезную высоту помещения. При укладке в два слоя стыки перекрываются с обязательным смещением.'
     },
     wall: {
       title: 'Фасад и стены',
-      product: 'PlastHard Vent · 50–100 мм',
       desc: 'В вентилируемых фасадах и каркасных стенах используется PlastHard Vent толщиной 50–100 мм. Полужёсткие плиты сохраняют форму в вертикальной плоскости, не дают усадки и обеспечивают плотное примыкание к каркасу. Паропроницаемость материала позволяет конструкции «дышать» без риска накопления конденсата.'
     },
     floor: {
       title: 'Полы и фундамент',
-      product: 'PlastHard Solid · 150–200 мм',
       desc: 'Жёсткие плиты PlastHard Solid укладываются под бетонную стяжку и на фундамент. Высокая плотность выдерживает нагрузку от раствора и мебели, не сминается и не теряет проектную толщину. Рекомендуемая толщина — 150–200 мм для жилых помещений и 100 мм для неотапливаемых.'
     },
     flat: {
       title: 'Квартира',
-      product: 'PlastHard Vent · 50 мм',
       desc: 'В квартире плиты ставят в каркас стен и перегородок под гипсокартон. Слой не забирает площадь комнаты, не пылит и не выделяет фенола. Под стяжку пола берут жёсткую марку толщиной 50 мм.'
     },
     banya: {
-      title: 'Баня',
-      product: 'PlastHard Vent · 100–150 мм',
-      desc: 'В бане плиты монтируют в каркас стен и на потолок под обшивку. Материал не содержит фенола и смол, не пылит и не теряет форму. На потолок — 100–150 мм, на стены — 100 мм.'
+      title: 'Дача и баня',
+      desc: 'На даче и в бане плиты монтируют в каркас стен, на потолок и под кровлю. Материал не содержит фенола и смол, не пылит и не теряет форму от влажности и мороза. На потолок — 100–150 мм, на стены дачи и бани — 100 мм.'
+    },
+    tent: {
+      title: 'Каркасно-тентовые и купольные конструкции',
+      desc: 'Благодаря своей низкой массе, эластичности, простоте кроя и монтажа Пласт ХАРД рекомендован для утепления быстровозводимых каркасно-тентовых сооружений, современных купольных домов и бескаркасных ангаров.'
+    },
+    custom: {
+      title: 'Нестандартное применение',
+      desc: 'Пласт ХАРД используют для утепления ульев, теплиц, входных дверей, применяют как траншейный утеплитель, как шумоизоляцию для трубопроводов. Материал применяют в спортивных залах в виде матов, в качестве защитных протекторов в батутных центрах и т.д.'
     }
   };
 
-  var SCHEME_SCENE = { roof: 'house', wall: 'house', floor: 'house', flat: 'flat', banya: 'banya' };
+  var SCHEME_SCENE = { roof: 'house', wall: 'house', floor: 'house', flat: 'flat', banya: 'banya', tent: 'tent', custom: 'custom' };
+
+  var SCHEME_PRODUCTS = [
+    'Пласт ХАРД Стандарт · 50-200 мм',
+    'Пласт ХАРД Улучшенный · 50-100 мм'
+  ];
 
   var schemeVisual  = document.querySelector('.scheme-visual');
   var schemePanel   = $('#schemePanel');
   var schemeTitle   = $('#schemeTitle');
   var schemeDesc    = $('#schemeDesc');
-  var schemeProduct = $('#schemeProduct');
+  var schemeProducts = $('#schemeProducts');
   var zoneEls       = $$('.zone');
   var tabEls        = $$('.scheme-tab');
 
@@ -3754,9 +4045,22 @@ body.nav-open{
     var data = SCHEME_DATA[zoneKey];
     if (!data) { return; }
 
-    if (schemeTitle)   { schemeTitle.textContent = data.title; }
-    if (schemeDesc)    { schemeDesc.textContent = data.desc; }
-    if (schemeProduct) { schemeProduct.textContent = data.product; }
+    if (schemeTitle) { schemeTitle.textContent = data.title; }
+    if (schemeDesc)  { schemeDesc.textContent = data.desc; }
+    if (schemeProducts) {
+      var products = zoneKey === 'tent' ? SCHEME_PRODUCTS.slice(0, 1) : SCHEME_PRODUCTS;
+      schemeProducts.replaceChildren.apply(schemeProducts, products.map(function (text) {
+        var chip = document.createElement('div');
+        chip.className = 'scheme-product';
+        var parts = text.split(' · ');
+        parts.forEach(function (part, index) {
+          var line = document.createElement('span');
+          line.textContent = index === 0 && parts.length > 1 ? part + ' ·' : part;
+          chip.appendChild(line);
+        });
+        return chip;
+      }));
+    }
 
     zoneEls.forEach(function (z) {
       z.classList.toggle('active', z.dataset.zone === zoneKey);
@@ -3803,6 +4107,28 @@ body.nav-open{
       activateZone(tab.dataset.tab);
     });
   });
+
+  var schemeTabs = $('#schemeTabs');
+  var schemeMore = $('#schemeMore');
+  if (schemeMore && schemeTabs) {
+    schemeMore.addEventListener('click', function () {
+      var expanded = schemeTabs.classList.contains('is-expanded');
+      if (expanded) {
+        tabEls.forEach(function (tab) { tab.classList.remove('is-kept'); });
+        var activeTab = document.querySelector('.scheme-tab.active');
+        if (activeTab && activeTab.classList.contains('scheme-tab--extra')) {
+          activeTab.classList.add('is-kept');
+        }
+        schemeTabs.classList.remove('is-expanded');
+        schemeMore.textContent = 'Показать еще';
+        schemeMore.setAttribute('aria-expanded', 'false');
+      } else {
+        schemeTabs.classList.add('is-expanded');
+        schemeMore.textContent = 'Скрыть';
+        schemeMore.setAttribute('aria-expanded', 'true');
+      }
+    });
+  }
 
   var initialZone = document.querySelector('.zone[data-zone="floor"]');
   if (initialZone) { initialZone.classList.add('active'); }
@@ -4225,7 +4551,6 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
     return;
   }
 
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
   renderer.setClearColor(0x000000, 0);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.NoToneMapping;
@@ -4260,10 +4585,18 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
   var running = true;
   var baseYaw = 0.38;
 
+  function pixelRatio() {
+    var dpr = window.devicePixelRatio || 1;
+    var width = stage.clientWidth || 0;
+    if (width >= 400) { dpr = Math.max(dpr, 2); }
+    return Math.min(dpr, 2);
+  }
+
   function resize() {
     var width = stage.clientWidth;
     var height = stage.clientHeight;
     if (!width || !height) { return; }
+    renderer.setPixelRatio(pixelRatio());
     renderer.setSize(width, height, false);
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
@@ -4272,13 +4605,18 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 
   function fitCamera() {
     if (!bagSize) { return; }
+    var s = group.scale.x || 1;
+    var yaw = 1.15;
+    var pitch = 0.24;
+    var halfW = 0.5 * (Math.abs(bagSize.x * Math.cos(yaw)) + Math.abs(bagSize.z * Math.sin(yaw))) * s;
+    var halfH = (0.5 * bagSize.y * s) + (halfW * Math.sin(pitch));
+    halfW *= 1.08;
+    halfH *= 1.22;
     var vFov = THREE.MathUtils.degToRad(camera.fov);
     var hFov = 2 * Math.atan(Math.tan(vFov / 2) * camera.aspect);
-    var distY = (bagSize.y / 2) / Math.tan(vFov / 2);
-    var distX = (bagSize.x / 2) / Math.tan(hFov / 2);
-    var dist = Math.max(distX, distY) * 1.28;
-    camera.position.set(dist * 0.34, dist * 0.12, dist * 0.94);
-    camera.lookAt(0, bagSize.y * 0.02, 0);
+    var dist = Math.max(halfH / Math.tan(vFov / 2), halfW / Math.tan(hFov / 2));
+    camera.position.set(dist * 0.28, dist * 0.02, dist * 0.96);
+    camera.lookAt(0, -halfH * 0.1, 0);
   }
 
   new GLTFLoader().load('models/plasthard-bag.glb', function (gltf) {
@@ -4291,6 +4629,7 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 
     bagSize = size;
     group.scale.setScalar(1.21);
+    var maxAniso = renderer.capabilities.getMaxAnisotropy();
     model.traverse(function (obj) {
       if (!obj.isMesh) { return; }
       var mats = Array.isArray(obj.material) ? obj.material : [obj.material];
@@ -4298,6 +4637,14 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
         if (!mat) { return; }
         if (mat.envMapIntensity !== undefined) { mat.envMapIntensity = 0.1; }
         if (mat.specularIntensity !== undefined) { mat.specularIntensity = 0.15; }
+        ['map', 'normalMap', 'roughnessMap', 'metalnessMap', 'emissiveMap', 'aoMap'].forEach(function (key) {
+          var tex = mat[key];
+          if (!tex) { return; }
+          tex.anisotropy = maxAniso;
+          tex.minFilter = THREE.LinearMipmapLinearFilter;
+          tex.magFilter = THREE.LinearFilter;
+          tex.needsUpdate = true;
+        });
       });
     });
 
