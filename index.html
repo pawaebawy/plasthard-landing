@@ -1338,7 +1338,7 @@ ul{ margin:0; padding:0; list-style:none; }
   font-size:20px;
   line-height:28px;
   font-weight:700;
-  letter-spacing:.04em;
+  letter-spacing:0;
   color:var(--text);
   text-wrap:balance;
 }
@@ -1482,6 +1482,11 @@ ul{ margin:0; padding:0; list-style:none; }
   font-weight:800;
   color:var(--text);
   white-space:nowrap;
+  text-align:right;
+}
+#outMaterial{
+  white-space:normal;
+  text-wrap:balance;
 }
 .result-total{
   margin-top:auto;
@@ -1928,6 +1933,49 @@ ul{ margin:0; padding:0; list-style:none; }
   .footer-docs a{ width:100%; }
 }
 
+.to-top{
+  position:fixed;
+  right:24px;
+  bottom:24px;
+  z-index:1060;
+  width:52px;
+  height:52px;
+  padding:0;
+  border:1px solid rgba(14,123,168,.28);
+  border-radius:50%;
+  background:#fff;
+  color:var(--cyan);
+  box-shadow:var(--shadow-sm);
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(8px);
+  transition:opacity .25s ease, visibility .25s ease, transform .25s ease, background .25s ease, border-color .25s ease, color .25s ease, box-shadow .25s ease;
+}
+.to-top.is-visible{
+  opacity:1;
+  visibility:visible;
+  transform:none;
+}
+.to-top:hover{
+  background:var(--cyan);
+  border-color:var(--cyan);
+  color:#fff;
+  box-shadow:0 8px 20px rgba(14,123,168,.28);
+}
+.to-top:focus-visible{
+  outline:2px solid var(--cyan);
+  outline-offset:3px;
+}
+body:has(#cookieBar:not([hidden])) .to-top{ bottom:108px; }
+@media (max-width:700px){
+  .to-top{ right:16px; bottom:16px; }
+  body:has(#cookieBar:not([hidden])) .to-top{ bottom:148px; }
+}
+
 /* ============================================================
    15. МОДАЛЬНОЕ ОКНО
    ============================================================ */
@@ -2263,116 +2311,6 @@ body.nav-open{
 </section>
 
 <!-- ============================================================
-     2. О ПРОИЗВОДСТВЕ
-     ============================================================ -->
-<section class="section section--alt" id="about">
-  <div class="container">
-
-    <div class="section-head reveal">
-      <span class="section-tag">Производство</span>
-      <h2 class="section-title">Производитель с <span>25-летним опытом</span></h2>
-      <p class="section-sub">
-        Мы контролируем каждый этап — от приёмки первичного сырья
-        до упаковки готовых плит Пласт ХАРД.
-      </p>
-    </div>
-
-    <div class="about-rows">
-
-      <div class="about-row reveal">
-        <div class="about-text">
-          <p>ООО Торговый дом «Русхимволокно» — лидер в производстве и поставке инновационных синтетических материалов с 25-летним опытом на рынке. Мы создаём решения для текстильной, мебельной, строительной и легкой промышленности, гарантируя высочайшее качество и соответствие международным стандартам.</p>
-        </div>
-        <div class="about-facts">
-          <div class="fact-card">
-            <div class="fact-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/>
-              </svg>
-            </div>
-            <h4>Производство в России</h4>
-            <p>Площадка и склад в Иваново.</p>
-          </div>
-          <div class="fact-card">
-            <div class="fact-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5"/>
-              </svg>
-            </div>
-            <h4>Отраслевые решения</h4>
-            <p>Материалы для текстиля, мебели, строительства и лёгкой промышленности.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="about-row about-row--flip reveal">
-        <div class="about-facts">
-          <div class="fact-card">
-            <div class="fact-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2v6"/><path d="M12 16v6"/><circle cx="12" cy="12" r="4"/>
-              </svg>
-            </div>
-            <h4>Термоскрепление</h4>
-            <p>Волокна соединяются температурой — без клеев и смол.</p>
-          </div>
-          <div class="fact-card">
-            <div class="fact-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20 6L9 17l-5-5"/>
-              </svg>
-            </div>
-            <h4>Без формальдегида</h4>
-            <p>Ноль фенола, формальдегида и летучих органических соединений.</p>
-          </div>
-        </div>
-        <div class="about-text">
-          <p>
-            Ключевой принцип технологии Пласт ХАРД — <strong>полный отказ от химических связующих</strong>.
-            Волокна соединяются между собой исключительно под воздействием температуры,
-            без применения фенолформальдегидных смол, эпоксидных клеев и иных летучих
-            органических соединений. Именно поэтому материал не выделяет вредных веществ
-            ни при монтаже, ни на протяжении всего срока эксплуатации.
-          </p>
-        </div>
-      </div>
-
-      <div class="about-row reveal">
-        <div class="about-text">
-          <p>
-            Многоступенчатая система очистки полимерного сырья позволяет получать
-            однородное волокно с предсказуемыми физическими характеристиками. Каждая партия
-            проходит входной контроль и лабораторные испытания на теплопроводность,
-            плотность, влагопоглощение и пожарную безопасность.
-          </p>
-        </div>
-        <div class="about-facts">
-          <div class="fact-card">
-            <div class="fact-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6"/>
-              </svg>
-            </div>
-            <h4>Полный цикл</h4>
-            <p>Собственная линия формирования и термоскрепления волокна в Иваново.</p>
-          </div>
-          <div class="fact-card">
-            <div class="fact-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              </svg>
-            </div>
-            <h4>Лабораторный контроль</h4>
-            <p>Каждая партия проверяется на теплопроводность и пожарную безопасность.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
      3. ПРОДУКЦИЯ (СЛАЙДЕР)
      ============================================================ -->
 <section class="section" id="products">
@@ -2513,6 +2451,116 @@ body.nav-open{
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- ============================================================
+     2. О ПРОИЗВОДСТВЕ
+     ============================================================ -->
+<section class="section section--alt" id="about">
+  <div class="container">
+
+    <div class="section-head reveal">
+      <span class="section-tag">Производство</span>
+      <h2 class="section-title">Производитель с <span>25-летним опытом</span></h2>
+      <p class="section-sub">
+        Мы контролируем каждый этап — от приёмки первичного сырья
+        до упаковки готовых плит Пласт ХАРД.
+      </p>
+    </div>
+
+    <div class="about-rows">
+
+      <div class="about-row reveal">
+        <div class="about-text">
+          <p>ООО Торговый дом «Русхимволокно» — лидер в производстве и поставке инновационных синтетических материалов <strong>с 25-летним опытом</strong> на рынке. Мы создаём решения для текстильной, мебельной, строительной и легкой промышленности, гарантируя высочайшее качество и соответствие международным стандартам.</p>
+        </div>
+        <div class="about-facts">
+          <div class="fact-card">
+            <div class="fact-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/>
+              </svg>
+            </div>
+            <h4>Производство в России</h4>
+            <p>Площадка и склад в Иваново.</p>
+          </div>
+          <div class="fact-card">
+            <div class="fact-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5"/>
+              </svg>
+            </div>
+            <h4>Отраслевые решения</h4>
+            <p>Материалы для текстиля, мебели, строительства и лёгкой промышленности.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-row about-row--flip reveal">
+        <div class="about-facts">
+          <div class="fact-card">
+            <div class="fact-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v6"/><path d="M12 16v6"/><circle cx="12" cy="12" r="4"/>
+              </svg>
+            </div>
+            <h4>Термоскрепление</h4>
+            <p>Волокна соединяются температурой — без клеев и смол.</p>
+          </div>
+          <div class="fact-card">
+            <div class="fact-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 6L9 17l-5-5"/>
+              </svg>
+            </div>
+            <h4>Без формальдегида</h4>
+            <p>Ноль фенола, формальдегида и летучих органических соединений.</p>
+          </div>
+        </div>
+        <div class="about-text">
+          <p>
+            Ключевой принцип технологии Пласт ХАРД — <strong>полный отказ от химических связующих</strong>.
+            Волокна соединяются между собой исключительно под воздействием температуры,
+            без применения фенолформальдегидных смол, эпоксидных клеев и иных летучих
+            органических соединений. Именно поэтому материал не выделяет вредных веществ
+            ни при монтаже, ни на протяжении всего срока эксплуатации.
+          </p>
+        </div>
+      </div>
+
+      <div class="about-row reveal">
+        <div class="about-text">
+          <p>
+            Многоступенчатая система очистки полимерного сырья позволяет получать
+            <strong>однородное волокно с предсказуемыми физическими характеристиками</strong>. Каждая партия
+            проходит входной контроль и лабораторные испытания на теплопроводность,
+            плотность, влагопоглощение и пожарную безопасность.
+          </p>
+        </div>
+        <div class="about-facts">
+          <div class="fact-card">
+            <div class="fact-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6"/>
+              </svg>
+            </div>
+            <h4>Полный цикл</h4>
+            <p>Собственная линия формирования и термоскрепления волокна в Иваново.</p>
+          </div>
+          <div class="fact-card">
+            <div class="fact-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <h4>Лабораторный контроль</h4>
+            <p>Каждая партия проверяется на теплопроводность и пожарную безопасность.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
@@ -3366,38 +3414,36 @@ body.nav-open{
     <div class="service-grid reveal-group">
       <article class="service-card">
         <div class="service-icon" aria-hidden="true">
-          <svg viewBox="0 0 96 96" fill="none">
-            <rect x="14" y="50" width="34" height="34" rx="3" fill="rgba(14,123,168,.18)" stroke="#0e7ba8" stroke-width="2.4"/>
-            <path d="M2 67h12" stroke="#0e7ba8" stroke-width="2.2" stroke-linecap="round"/>
-            <path d="M9 62l5 5-5 5" stroke="#0e7ba8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M60 67H48" stroke="#0e7ba8" stroke-width="2.2" stroke-linecap="round"/>
-            <path d="M53 62l-5 5 5 5" stroke="#0e7ba8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M31 36v14" stroke="#0e7ba8" stroke-width="2.2" stroke-linecap="round"/>
-            <path d="M26 45l5 5 5-5" stroke="#0e7ba8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-            <rect x="50" y="42" width="16" height="16" rx="2" fill="rgba(14,123,168,.18)" stroke="#0e7ba8" stroke-width="2.2"/>
-            <rect x="60" y="28" width="16" height="16" rx="2" fill="rgba(14,123,168,.18)" stroke="#0e7ba8" stroke-width="2.2"/>
-            <rect x="70" y="14" width="16" height="16" rx="2" fill="rgba(14,123,168,.18)" stroke="#0e7ba8" stroke-width="2.2"/>
+          <svg viewBox="0 0 80 80" fill="none">
+            <rect x="16" y="30" width="48" height="34" rx="6" fill="rgba(14,123,168,.14)" stroke="#0e7ba8" stroke-width="2.2"/>
+            <path d="M26 42h28M26 50h28M26 58h20" stroke="#0e7ba8" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M40 8v16" stroke="#0e7ba8" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M33 17l7 7 7-7" stroke="#0e7ba8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M4 47h8" stroke="#0e7ba8" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M8 42l5 5-5 5" stroke="#0e7ba8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M76 47h-8" stroke="#0e7ba8" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M72 42l-5 5 5 5" stroke="#0e7ba8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
         <div>
-          <h3>ВАКУУМАЦИЯ</h3>
+          <h3>Вакуумация</h3>
           <p>Бесплатная вакуумация рулонных утеплителей позволяет экономить до 40% транспортных расходов и место для хранения</p>
         </div>
       </article>
 
       <article class="service-card">
         <div class="service-icon" aria-hidden="true">
-          <svg viewBox="0 0 96 80" fill="none">
-            <path d="M12 34h40" stroke="#0e7ba8" stroke-width="7" stroke-linecap="round"/>
-            <path d="M12 30v8" stroke="#0e7ba8" stroke-width="2.4" stroke-linecap="round"/>
-            <circle cx="62" cy="32" r="16" fill="rgba(14,123,168,.16)" stroke="#0e7ba8" stroke-width="2.4"/>
-            <circle cx="62" cy="32" r="3.5" fill="#fff" stroke="#0e7ba8" stroke-width="2"/>
-            <rect x="8" y="56" width="80" height="14" rx="2" fill="rgba(14,123,168,.16)" stroke="#0e7ba8" stroke-width="2.4"/>
-            <path d="M18 56v6M28 56v4M38 56v6M48 56v4M58 56v6M68 56v4M78 56v6" stroke="#0e7ba8" stroke-width="1.6" stroke-linecap="round"/>
+          <svg viewBox="0 0 80 80" fill="none">
+            <rect x="6" y="20" width="38" height="14" rx="3" fill="rgba(14,123,168,.14)" stroke="#0e7ba8" stroke-width="2"/>
+            <path d="M6 23v8" stroke="#0e7ba8" stroke-width="2.2" stroke-linecap="round"/>
+            <circle cx="54" cy="27" r="15" fill="#fff" stroke="#0e7ba8" stroke-width="2.2"/>
+            <circle cx="54" cy="27" r="4" fill="rgba(14,123,168,.16)" stroke="#0e7ba8" stroke-width="2"/>
+            <rect x="8" y="50" width="64" height="16" rx="3" fill="rgba(14,123,168,.12)" stroke="#0e7ba8" stroke-width="2"/>
+            <path d="M18 50v7M28 50v4M38 50v7M48 50v4M58 50v7M66 50v4" stroke="#0e7ba8" stroke-width="1.6" stroke-linecap="round"/>
           </svg>
         </div>
         <div>
-          <h3>НЕСТАНДАРТ</h3>
+          <h3>Нестандарт</h3>
           <p>При заказе крупных партий возможно изготовление материалов под размеры заказчика.</p>
         </div>
       </article>
@@ -3430,9 +3476,10 @@ body.nav-open{
         <div class="field">
           <label for="calcMaterial">Марка материала</label>
           <select id="calcMaterial">
-            <option value="190" data-name="PlastHard Light">PlastHard Light — 190 ₽/м²</option>
-            <option value="270" data-name="PlastHard Vent" selected>PlastHard Vent — 270 ₽/м²</option>
-            <option value="380" data-name="PlastHard Solid">PlastHard Solid — 380 ₽/м²</option>
+            <option value="190" data-name="Пласт ХАРД Стандарт" selected>Пласт ХАРД Стандарт — 190 ₽/м²</option>
+            <option value="270" data-name="Пласт ХАРД Улучшенный">Пласт ХАРД Улучшенный — 270 ₽/м²</option>
+            <option value="320" data-name="Пласт ХАРД ШУМ">Пласт ХАРД ШУМ — 320 ₽/м²</option>
+            <option value="150" data-name="Межвенцовый утеплитель синтетический">Межвенцовый утеплитель синтетический — 150 ₽/м²</option>
           </select>
         </div>
 
@@ -3465,7 +3512,7 @@ body.nav-open{
 
         <div class="result-row">
           <span class="label">Марка</span>
-          <span class="value" id="outMaterial">PlastHard Vent</span>
+          <span class="value" id="outMaterial">Пласт ХАРД Стандарт</span>
         </div>
 
         <div class="result-row">
@@ -3485,12 +3532,12 @@ body.nav-open{
 
         <div class="result-row">
           <span class="label">Цена за м² при данной толщине</span>
-          <span class="value" id="outPriceSqm">540 ₽</span>
+          <span class="value" id="outPriceSqm">380 ₽</span>
         </div>
 
         <div class="result-total">
           <div class="label">Ориентировочная стоимость</div>
-          <div class="value" id="outTotal">54 000 ₽</div>
+          <div class="value" id="outTotal">38 000 ₽</div>
           <button type="button" class="btn btn--primary btn--block" style="margin-top:22px;" data-open-modal>
             Получить точное коммерческое предложение
           </button>
@@ -3899,6 +3946,13 @@ body.nav-open{
     </form>
   </div>
 </div>
+
+<button type="button" class="to-top" id="toTop" aria-label="Наверх">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <line x1="12" y1="19" x2="12" y2="5"/>
+    <polyline points="6 11 12 5 18 11"/>
+  </svg>
+</button>
 
 <div class="cookie-bar" id="cookieBar" hidden>
   <p>Используя данный сайт, вы даете <a href="cookie-consent.html">Согласие</a> на использование файлов cookie, помогающих нам сделать его удобнее для вас. <a href="cookie-policy.html">Подробнее</a></p>
@@ -4982,6 +5036,22 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
     renderer.render(scene, camera);
   }
   window.requestAnimationFrame(frame);
+})();
+
+(function () {
+  var toTop = document.getElementById('toTop');
+  if (!toTop) { return; }
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function toggleToTop() {
+    toTop.classList.toggle('is-visible', window.scrollY > 400);
+  }
+
+  window.addEventListener('scroll', toggleToTop, { passive: true });
+  toggleToTop();
+  toTop.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+  });
 })();
 </script>
 
