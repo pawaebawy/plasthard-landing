@@ -1,13 +1,13 @@
 <?php
 /**
- * Приём заявок с лендинга PlastHard.
+ * Приём заявок с лендинга Пласт ХАРД.
  * Письмо уходит на MAIL_TO. На хостинге From обычно должен быть ящиком этого же домена.
  */
 declare(strict_types=1);
 
-const MAIL_TO = 'info@plast-hard.ru';
+const MAIL_TO = 'rushimvolokno@gmail.com';
 const MAIL_FROM = 'info@plast-hard.ru';
-const MAIL_FROM_NAME = 'PlastHard';
+const MAIL_FROM_NAME = 'Пласт ХАРД';
 
 header('Content-Type: application/json; charset=utf-8');
 header('X-Content-Type-Options: nosniff');
@@ -61,8 +61,8 @@ if ($consent !== '1' && $consent !== 'on') {
 
 $isLead = $form === 'lead';
 $subject = $isLead
-    ? 'Заявка на сотрудничество — PlastHard'
-    : ($product !== '' ? 'Заявка: ' . $product . ' — PlastHard' : 'Заказ звонка — PlastHard');
+    ? 'Заявка на сотрудничество — Пласт ХАРД'
+    : ($product !== '' ? 'Заявка: ' . $product . ' — Пласт ХАРД' : 'Заказ звонка — Пласт ХАРД');
 
 $lines = [
     $isLead ? 'Новая заявка на сотрудничество' : 'Новая заявка на звонок',
