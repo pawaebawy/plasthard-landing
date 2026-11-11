@@ -513,8 +513,9 @@ ul{ margin:0; padding:0; list-style:none; }
   animation:chipFloat 6s ease-in-out infinite;
 }
 .iso-chip--1{ top:6%; left:-4%; animation-delay:0s; }
-.iso-chip--2{ bottom:14%; right:-2%; animation-delay:1.4s; color:var(--burgundy); border-color:rgba(153,0,51,.3); }
-.iso-chip--3{ bottom:-2%; left:8%; animation-delay:2.6s; }
+.iso-chip--2{ bottom:14%; right:-2%; animation-delay:1.4s; }
+.iso-chip--3{ bottom:12%; left:8%; animation-delay:2.6s; }
+.iso-chip--4{ top:0; right:-2%; animation-delay:.8s; }
 @keyframes chipFloat{
   0%,100%{ transform:translateY(0); }
   50%{ transform:translateY(-12px); }
@@ -623,6 +624,7 @@ ul{ margin:0; padding:0; list-style:none; }
   display:flex;
   flex-direction:column;
   box-shadow:var(--shadow-sm);
+  cursor:pointer;
   transition:border-color .35s ease, box-shadow .35s ease;
 }
 .product-card:hover{
@@ -809,10 +811,11 @@ ul{ margin:0; padding:0; list-style:none; }
   display:flex;
   flex-wrap:wrap;
   gap:44px;
-  align-items:flex-start;
+  align-items:stretch;
 }
 .scheme-visual{
   flex:1 1 440px;
+  align-self:flex-start;
   min-width:0;
   border:1px solid rgba(15,39,68,.08);
   border-radius:var(--radius);
@@ -832,15 +835,19 @@ ul{ margin:0; padding:0; list-style:none; }
 .scheme-visual[data-scene="flat"] .scheme-scene--flat,
 .scheme-visual[data-scene="banya"] .scheme-scene--banya,
 .scheme-visual[data-scene="tent"] .scheme-scene--tent,
-.scheme-visual[data-scene="custom"] .scheme-scene--custom{ display:block; }
+.scheme-visual[data-scene="custom"] .scheme-scene--custom,
+.scheme-visual[data-scene="industrial"] .scheme-scene--industrial{ display:block; }
 
 .zone{
   fill:#ffffff;
   stroke:rgba(14,123,168,.4);
   stroke-width:1.6;
   cursor:pointer;
+  outline:none;
   transition:fill .3s ease, stroke .3s ease;
 }
+.zone:focus,
+.zone:focus-visible{ outline:none; }
 .zone[data-zone="roof"]{ fill:url(#schemeRoofFill); }
 .zone[data-zone="wall"]{ fill:url(#schemeWallFill); }
 .zone[data-zone="floor"]{ fill:url(#schemeFloorFill); }
@@ -859,14 +866,18 @@ ul{ margin:0; padding:0; list-style:none; }
 .scheme-panel{
   flex:1 1 360px;
   min-width:0;
+  display:flex;
+  flex-direction:column;
 }
 .scheme-panel-inner{
+  flex:1 1 auto;
+  width:100%;
   padding:34px 32px;
   border:1px solid rgba(15,39,68,.08);
   border-radius:var(--radius);
   background:#fff;
   box-sizing:border-box;
-  min-height:320px;
+  min-height:100%;
   display:flex;
   flex-direction:column;
   box-shadow:var(--shadow-sm);
@@ -882,7 +893,7 @@ ul{ margin:0; padding:0; list-style:none; }
   letter-spacing:.12em;
   text-transform:uppercase;
   color:var(--cyan);
-  margin-bottom:14px;
+  margin-bottom:4px;
 }
 .scheme-title{
   font-size:clamp(22px, 2.6vw, 28px);
@@ -893,8 +904,10 @@ ul{ margin:0; padding:0; list-style:none; }
   font-size:15px;
   color:var(--muted);
   line-height:1.75;
-  margin-bottom:22px;
-  flex:1 1 auto;
+  margin-bottom:16px;
+}
+.scheme-panel-inner > .btn{
+  margin-top:auto;
 }
 .scheme-products{
   display:flex;
@@ -1279,6 +1292,66 @@ ul{ margin:0; padding:0; list-style:none; }
 }
 
 /* ============================================================
+   10d. УСЛУГИ
+   ============================================================ */
+#services .section-title{ margin-bottom:0; }
+.service-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+}
+.service-card{
+  display:flex;
+  align-items:center;
+  gap:24px;
+  min-width:0;
+  padding:32px;
+  border:1px solid rgba(15,39,68,.08);
+  border-radius:var(--radius);
+  background:#fff;
+  box-sizing:border-box;
+  box-shadow:var(--shadow-sm);
+  transition:transform .35s cubic-bezier(.22,.75,.28,1), border-color .3s ease, box-shadow .35s cubic-bezier(.22,.75,.28,1);
+}
+.service-card:hover{
+  transform:translateY(-8px);
+  border-color:rgba(14,123,168,.35);
+  box-shadow:var(--shadow-lg);
+}
+.service-icon{
+  flex:0 0 112px;
+  width:112px;
+  height:112px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:16px;
+  background:var(--cyan-soft);
+}
+.service-icon svg{
+  display:block;
+  width:84px;
+  height:84px;
+}
+.service-card h3{
+  margin:0 0 8px;
+  font-size:20px;
+  line-height:28px;
+  font-weight:700;
+  letter-spacing:.04em;
+  color:var(--text);
+  text-wrap:balance;
+}
+.service-card p{
+  margin:0;
+  font-size:16px;
+  line-height:24px;
+  font-weight:500;
+  color:var(--muted);
+  text-wrap:pretty;
+}
+
+/* ============================================================
    11. КАЛЬКУЛЯТОР
    ============================================================ */
 .calc-grid{
@@ -1443,7 +1516,7 @@ ul{ margin:0; padding:0; list-style:none; }
    ============================================================ */
 .faq-wrap{
   max-width:880px;
-  margin:72px auto 0;
+  margin:0 auto;
 }
 .faq-head{
   text-align:center;
@@ -1482,11 +1555,6 @@ ul{ margin:0; padding:0; list-style:none; }
   transition:color .25s ease;
 }
 .faq-q:hover{ color:var(--cyan); }
-.faq-item.open .faq-q{
-  background:var(--cyan);
-  color:#fff;
-}
-.faq-item.open .faq-q:hover{ color:#fff; }
 .faq-icon{
   flex-shrink:0;
   width:30px; height:30px;
@@ -1504,9 +1572,10 @@ ul{ margin:0; padding:0; list-style:none; }
 }
 .faq-item.open .faq-icon{
   transform:rotate(45deg);
-  background:var(--burgundy);
-  border-color:var(--burgundy-hover);
+  background:var(--cyan);
+  border-color:var(--cyan);
   color:#fff;
+  box-shadow:0 8px 20px rgba(14,123,168,.28);
 }
 .faq-a{
   max-height:0;
@@ -1821,13 +1890,9 @@ ul{ margin:0; padding:0; list-style:none; }
   overflow:hidden;
   background:#e7eef5;
 }
-.contact-map iframe{
-  position:absolute;
-  top:-48px;
-  left:0;
-  width:calc(100% + 56px);
-  height:calc(100% + 76px);
-  border:0;
+#contactMap{
+  width:100%;
+  height:100%;
 }
 
 .cookie-bar{
@@ -1982,6 +2047,7 @@ body.nav-open{
     transform:translateX(-50%) rotate(135deg);
   }
   .supply-board{ grid-template-columns:1fr; }
+  .service-grid{ grid-template-columns:1fr; }
 }
 
 @media (max-width:990px){
@@ -2048,6 +2114,7 @@ body.nav-open{
   .iso-chip{ font-size:11px; padding:8px 12px; }
   .iso-chip--1{ left:0; }
   .iso-chip--2{ right:0; }
+  .iso-chip--4{ right:0; }
 
   .contact-card,
   .form-card,
@@ -2068,6 +2135,8 @@ body.nav-open{
   .audience-card:last-child{ grid-column:auto; }
   .faq-q{ padding:18px 20px; font-size:15px; }
   .faq-a-inner{ padding:0 20px 20px; font-size:14px; }
+  .service-card{ padding:24px; gap:16px; }
+  .service-icon{ flex-basis:96px; width:96px; height:96px; }
   .footer-top{ gap:28px; }
 }
 
@@ -2160,20 +2229,20 @@ body.nav-open{
 
         <div class="hero-stats">
           <div class="hero-stat">
-            <b>0,035</b>
-            <span>Вт/мК — теплопроводность</span>
+            <b>100+</b>
+            <span>срок службы не ограничен</span>
+          </div>
+          <div class="hero-stat">
+            <b>0,037</b>
+            <span>низкая теплопроводность</span>
+          </div>
+          <div class="hero-stat">
+            <b>NRC 0,6</b>
+            <span>обеспечивают звукоизоляцию</span>
           </div>
           <div class="hero-stat">
             <b>100%</b>
             <span>чистое полиэфирное волокно</span>
-          </div>
-          <div class="hero-stat">
-            <b>50+</b>
-            <span>лет срок службы</span>
-          </div>
-          <div class="hero-stat">
-            <b>НГ/G1</b>
-            <span>класс пожарной безопасности</span>
           </div>
         </div>
       </div>
@@ -2183,9 +2252,10 @@ body.nav-open{
           <canvas id="bagCanvas" aria-label="Упаковка утеплителя PlastHard"></canvas>
         </div>
 
-        <div class="iso-chip iso-chip--1">λ = 0,035 Вт/мК</div>
-        <div class="iso-chip iso-chip--2">Без фенола</div>
-        <div class="iso-chip iso-chip--3">Срок службы 50+ лет</div>
+        <div class="iso-chip iso-chip--1">Экономия на отоплении</div>
+        <div class="iso-chip iso-chip--2">Не накапливают влагу</div>
+        <div class="iso-chip iso-chip--3">Не распространяют пламя</div>
+        <div class="iso-chip iso-chip--4">Используются всесезонно</div>
       </div>
 
     </div>
@@ -2454,10 +2524,10 @@ body.nav-open{
 
     <div class="section-head reveal">
       <span class="section-tag">Применение</span>
-      <h2 class="section-title">Куда монтировать <span>какую марку</span></h2>
+      <h2 class="section-title">Где применяется <span>Пласт ХАРД</span></h2>
       <p class="section-sub">
-        Наведите курсор на зону дома или выберите её кнопкой ниже — мы подскажем
-        подходящую марку PlastHard и рекомендуемую толщину.
+        Выберите применение кнопкой или наведите курсор на зону дома —
+        подскажем марку Пласт ХАРД и подходящую толщину.
       </p>
     </div>
 
@@ -2468,6 +2538,7 @@ body.nav-open{
       <button type="button" class="scheme-tab scheme-tab--extra" data-tab="flat">Квартира</button>
       <button type="button" class="scheme-tab scheme-tab--extra" data-tab="banya">Дача и баня</button>
       <button type="button" class="scheme-tab scheme-tab--extra scheme-tab--wide" data-tab="tent">Каркасно-тентовые и купольные конструкции</button>
+      <button type="button" class="scheme-tab scheme-tab--extra" data-tab="industrial">Промышленные объекты</button>
       <button type="button" class="scheme-tab scheme-tab--extra" data-tab="custom">Нестандартное применение</button>
       <button type="button" class="scheme-more" id="schemeMore" aria-expanded="false">Показать еще</button>
     </div>
@@ -2809,7 +2880,6 @@ body.nav-open{
           <ellipse cx="314" cy="418" rx="230" ry="11" fill="rgba(15,39,68,0.07)"/>
 
           <rect x="80" y="156" width="231" height="244" fill="url(#tentCover)"/>
-          <rect x="307" y="156" width="8" height="92" fill="#1c2833"/>
 
           <g fill="none" stroke="#5e7688" stroke-linecap="round" stroke-linejoin="round">
             <path d="M72 156 H550" stroke-width="2.6"/>
@@ -2900,18 +2970,127 @@ body.nav-open{
             <path d="M352 400 V304 C352 214 402 168 452 168 C502 168 552 214 552 304 V400" fill="none" stroke="rgba(14,123,168,0.55)" stroke-width="1.4"/>
             <path d="M392 400 V286 C392 214 424 184 452 184 C480 184 512 214 512 286 V400" fill="none" stroke="rgba(14,123,168,0.4)" stroke-width="1.3"/>
             <path d="M332 318 H572 M352 360 H552" fill="none" stroke="rgba(14,123,168,0.4)" stroke-width="1.3"/>
+            <g stroke-linecap="round" stroke-linejoin="round">
+              <path d="M378 398c2-24 8-46 4-68" fill="none" stroke="#0e7ba8" stroke-width="1.6"/>
+              <path d="M380 372c-18-2-26-16-18-26 12 3 22 12 20 22z" fill="rgba(14,123,168,0.2)" stroke="#0e7ba8" stroke-width="1.2"/>
+              <path d="M382 348c16-10 28-4 30 10-14 3-24 2-30-2z" fill="rgba(14,123,168,0.16)" stroke="#0e7ba8" stroke-width="1.2"/>
+              <path d="M374 386c-16 2-24-10-16-20 10 5 18 10 20 14z" fill="rgba(14,123,168,0.14)" stroke="#0e7ba8" stroke-width="1.2"/>
+              <circle cx="356" cy="360" r="4.6" fill="#fff7f8" stroke="#990033" stroke-width="1.3"/>
+              <path d="M356 355.6v-3.2" stroke="#0e7ba8" stroke-width="1.2"/>
+              <circle cx="404" cy="342" r="4" fill="#fff7f8" stroke="#990033" stroke-width="1.3"/>
+              <path d="M404 338.2v-3" stroke="#0e7ba8" stroke-width="1.2"/>
+              <circle cx="392" cy="378" r="5" fill="#fff7f8" stroke="#990033" stroke-width="1.3"/>
+              <path d="M392 373.2v-3" stroke="#0e7ba8" stroke-width="1.2"/>
+              <circle cx="362" cy="386" r="3.6" fill="#fff7f8" stroke="#990033" stroke-width="1.3"/>
+              <path d="M362 382.6v-2.8" stroke="#0e7ba8" stroke-width="1.2"/>
+
+              <path d="M518 398c-2-24-8-46-4-68" fill="none" stroke="#0e7ba8" stroke-width="1.6"/>
+              <path d="M516 372c18-2 26-16 18-26-12 3-22 12-20 22z" fill="rgba(14,123,168,0.2)" stroke="#0e7ba8" stroke-width="1.2"/>
+              <path d="M514 348c-16-10-28-4-30 10 14 3 24 2 30-2z" fill="rgba(14,123,168,0.16)" stroke="#0e7ba8" stroke-width="1.2"/>
+              <path d="M522 386c16 2 24-10 16-20-10 5-18 10-20 14z" fill="rgba(14,123,168,0.14)" stroke="#0e7ba8" stroke-width="1.2"/>
+              <circle cx="540" cy="360" r="4.6" fill="#fff7f8" stroke="#990033" stroke-width="1.3"/>
+              <path d="M540 355.6v-3.2" stroke="#0e7ba8" stroke-width="1.2"/>
+              <circle cx="492" cy="342" r="4" fill="#fff7f8" stroke="#990033" stroke-width="1.3"/>
+              <path d="M492 338.2v-3" stroke="#0e7ba8" stroke-width="1.2"/>
+              <circle cx="504" cy="378" r="5" fill="#fff7f8" stroke="#990033" stroke-width="1.3"/>
+              <path d="M504 373.2v-3" stroke="#0e7ba8" stroke-width="1.2"/>
+              <circle cx="534" cy="386" r="3.6" fill="#fff7f8" stroke="#990033" stroke-width="1.3"/>
+              <path d="M534 382.6v-2.8" stroke="#0e7ba8" stroke-width="1.2"/>
+            </g>
             <rect x="424" y="312" width="56" height="88" rx="3" fill="#fff7f8" stroke="#990033" stroke-width="1.8"/>
             <rect x="430" y="322" width="44" height="30" rx="2" fill="rgba(153,0,51,0.08)" stroke="rgba(153,0,51,0.35)" stroke-width="1.2"/>
             <rect x="430" y="358" width="44" height="30" rx="2" fill="rgba(153,0,51,0.08)" stroke="rgba(153,0,51,0.35)" stroke-width="1.2"/>
             <circle cx="468" cy="376" r="2.4" fill="#990033"/>
-            <path d="M392 392c8-18 14-18 20 0" fill="none" stroke="#0e7ba8" stroke-width="1.5" stroke-linecap="round"/>
-            <path d="M398 392c4-12 8-12 12 0" fill="rgba(14,123,168,0.16)" stroke="#0e7ba8" stroke-width="1.2"/>
-            <path d="M500 394c8-20 16-20 24 0" fill="none" stroke="#0e7ba8" stroke-width="1.5" stroke-linecap="round"/>
-            <path d="M508 394c5-12 10-12 14 0" fill="rgba(14,123,168,0.16)" stroke="#0e7ba8" stroke-width="1.2"/>
           </g>
 
           <line class="ground-line" x1="28" y1="412" x2="88" y2="412"/>
           <line class="ground-line" x1="560" y1="412" x2="592" y2="412"/>
+        </svg>
+
+        <svg class="scheme-svg scheme-scene scheme-scene--industrial" viewBox="0 0 620 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Промышленное здание с трубами, вид сбоку">
+          <defs>
+            <linearGradient id="plantSky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#f7fbfe"/>
+              <stop offset="100%" stop-color="#e7f1f8"/>
+            </linearGradient>
+            <linearGradient id="plantWall" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="100%" stop-color="#eef4f9"/>
+            </linearGradient>
+            <linearGradient id="plantGlass" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#f4fcff"/>
+              <stop offset="100%" stop-color="#b9e4f4"/>
+            </linearGradient>
+          </defs>
+
+          <rect width="620" height="480" fill="url(#plantSky)"/>
+          <circle cx="86" cy="64" r="28" fill="rgba(48,177,232,0.16)"/>
+          <circle cx="86" cy="64" r="16" fill="rgba(48,177,232,0.18)"/>
+          <g fill="rgba(255,255,255,0.85)">
+            <ellipse cx="500" cy="58" rx="30" ry="12"/>
+            <ellipse cx="526" cy="52" rx="20" ry="12"/>
+            <ellipse cx="478" cy="56" rx="16" ry="9"/>
+          </g>
+
+          <rect x="0" y="412" width="620" height="68" fill="#e3eef6"/>
+          <ellipse cx="300" cy="418" rx="260" ry="11" fill="rgba(15,39,68,0.07)"/>
+
+          <g fill="none" stroke="#0e7ba8" stroke-linecap="round">
+            <path d="M24 340 H104" stroke-width="6"/>
+            <path d="M24 366 H104" stroke-width="6"/>
+            <path d="M24 392 H104" stroke-width="5"/>
+            <path d="M40 326 V412" stroke-width="2.4"/>
+            <path d="M68 326 V412" stroke-width="2.4"/>
+            <path d="M40 340 H68 M40 366 H68 M40 392 H68" stroke-width="1.6"/>
+          </g>
+
+          <g>
+            <rect x="96" y="168" width="392" height="22" rx="1" fill="#f7fbfe" stroke="#0e7ba8" stroke-width="1.7"/>
+            <rect x="150" y="132" width="210" height="38" fill="url(#plantWall)" stroke="#0e7ba8" stroke-width="1.6"/>
+            <path d="M162 144 H348 M162 156 H348" stroke="rgba(14,123,168,0.4)" stroke-width="1.3"/>
+            <rect x="104" y="188" width="376" height="208" fill="url(#plantWall)" stroke="#0e7ba8" stroke-width="1.8"/>
+            <path d="M104 248 H480 M104 308 H480" stroke="rgba(14,123,168,0.28)" stroke-width="1.3"/>
+            <rect x="92" y="394" width="400" height="12" rx="1" fill="#d7e6f1" stroke="#0e7ba8" stroke-width="1.4"/>
+
+            <rect x="124" y="208" width="336" height="22" fill="url(#plantGlass)" stroke="#0e7ba8" stroke-width="1.3"/>
+            <path d="M164 208 V230 M204 208 V230 M244 208 V230 M284 208 V230 M324 208 V230 M364 208 V230 M404 208 V230" stroke="rgba(14,123,168,0.45)" stroke-width="1.2"/>
+
+            <rect x="124" y="262" width="70" height="28" rx="1" fill="url(#plantGlass)" stroke="#0e7ba8" stroke-width="1.4"/>
+            <rect x="206" y="262" width="70" height="28" rx="1" fill="url(#plantGlass)" stroke="#0e7ba8" stroke-width="1.4"/>
+            <rect x="288" y="262" width="70" height="28" rx="1" fill="url(#plantGlass)" stroke="#0e7ba8" stroke-width="1.4"/>
+            <path d="M147 262 V290 M229 262 V290 M311 262 V290" stroke="rgba(14,123,168,0.4)" stroke-width="1.2"/>
+
+            <rect x="214" y="324" width="112" height="70" fill="#f7fbfe" stroke="#0e7ba8" stroke-width="1.7"/>
+            <path d="M270 324 V394" stroke="#0e7ba8" stroke-width="1.4"/>
+            <path d="M226 352 H314" stroke="rgba(14,123,168,0.4)" stroke-width="1.3"/>
+            <circle cx="258" cy="360" r="2.3" fill="#990033"/>
+            <circle cx="282" cy="360" r="2.3" fill="#990033"/>
+
+            <rect x="392" y="332" width="40" height="62" rx="2" fill="#fff7f8" stroke="#990033" stroke-width="1.7"/>
+            <rect x="398" y="340" width="28" height="18" rx="1" fill="rgba(153,0,51,0.08)" stroke="rgba(153,0,51,0.35)" stroke-width="1.1"/>
+            <rect x="398" y="362" width="28" height="18" rx="1" fill="rgba(153,0,51,0.08)" stroke="rgba(153,0,51,0.35)" stroke-width="1.1"/>
+            <circle cx="422" cy="374" r="2" fill="#990033"/>
+          </g>
+
+          <g>
+            <rect x="214" y="42" width="14" height="92" fill="#f7fbfe" stroke="#0e7ba8" stroke-width="1.6"/>
+            <rect x="208" y="36" width="26" height="8" rx="1" fill="#fff" stroke="#0e7ba8" stroke-width="1.5"/>
+            <rect x="172" y="70" width="10" height="64" fill="#f7fbfe" stroke="#0e7ba8" stroke-width="1.5"/>
+            <rect x="167" y="64" width="20" height="7" rx="1" fill="#fff" stroke="#0e7ba8" stroke-width="1.4"/>
+            <path d="M174 62 C164 48 150 46 142 36" fill="none" stroke="rgba(14,123,168,0.35)" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="150" cy="30" r="5" fill="rgba(14,123,168,0.12)"/>
+            <circle cx="138" cy="22" r="3.5" fill="rgba(14,123,168,0.1)"/>
+          </g>
+
+          <g fill="none" stroke="#0e7ba8" stroke-linecap="round">
+            <path d="M480 344 H568" stroke-width="6"/>
+            <path d="M480 370 H568" stroke-width="6"/>
+            <path d="M480 396 H568" stroke-width="5"/>
+            <path d="M516 330 V412" stroke-width="2.4"/>
+          </g>
+
+          <line class="ground-line" x1="18" y1="412" x2="84" y2="412"/>
+          <line class="ground-line" x1="508" y1="412" x2="600" y2="412"/>
         </svg>
       </div>
 
@@ -2931,7 +3110,7 @@ body.nav-open{
             <div class="scheme-product"><span>Пласт ХАРД Улучшенный ·</span><span>50-100 мм</span></div>
           </div>
           <button type="button" class="btn btn--primary" data-open-modal>
-            Подобрать материал с инженером
+            Получить помощь в подборе
           </button>
         </div>
       </div>
@@ -3175,7 +3354,60 @@ body.nav-open{
 </section>
 
 <!-- ============================================================
-     6. КАЛЬКУЛЯТОР + FAQ
+     УСЛУГИ
+     ============================================================ -->
+<section class="section" id="services">
+  <div class="container">
+
+    <div class="section-head reveal">
+      <h2 class="section-title">Наши услуги для <span>вашего удобства</span></h2>
+    </div>
+
+    <div class="service-grid reveal-group">
+      <article class="service-card">
+        <div class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 96 96" fill="none">
+            <rect x="14" y="50" width="34" height="34" rx="3" fill="rgba(14,123,168,.18)" stroke="#0e7ba8" stroke-width="2.4"/>
+            <path d="M2 67h12" stroke="#0e7ba8" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M9 62l5 5-5 5" stroke="#0e7ba8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M60 67H48" stroke="#0e7ba8" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M53 62l-5 5 5 5" stroke="#0e7ba8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M31 36v14" stroke="#0e7ba8" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M26 45l5 5 5-5" stroke="#0e7ba8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="50" y="42" width="16" height="16" rx="2" fill="rgba(14,123,168,.18)" stroke="#0e7ba8" stroke-width="2.2"/>
+            <rect x="60" y="28" width="16" height="16" rx="2" fill="rgba(14,123,168,.18)" stroke="#0e7ba8" stroke-width="2.2"/>
+            <rect x="70" y="14" width="16" height="16" rx="2" fill="rgba(14,123,168,.18)" stroke="#0e7ba8" stroke-width="2.2"/>
+          </svg>
+        </div>
+        <div>
+          <h3>ВАКУУМАЦИЯ</h3>
+          <p>Бесплатная вакуумация рулонных утеплителей позволяет экономить до 40% транспортных расходов и место для хранения</p>
+        </div>
+      </article>
+
+      <article class="service-card">
+        <div class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 96 80" fill="none">
+            <path d="M12 34h40" stroke="#0e7ba8" stroke-width="7" stroke-linecap="round"/>
+            <path d="M12 30v8" stroke="#0e7ba8" stroke-width="2.4" stroke-linecap="round"/>
+            <circle cx="62" cy="32" r="16" fill="rgba(14,123,168,.16)" stroke="#0e7ba8" stroke-width="2.4"/>
+            <circle cx="62" cy="32" r="3.5" fill="#fff" stroke="#0e7ba8" stroke-width="2"/>
+            <rect x="8" y="56" width="80" height="14" rx="2" fill="rgba(14,123,168,.16)" stroke="#0e7ba8" stroke-width="2.4"/>
+            <path d="M18 56v6M28 56v4M38 56v6M48 56v4M58 56v6M68 56v4M78 56v6" stroke="#0e7ba8" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <h3>НЕСТАНДАРТ</h3>
+          <p>При заказе крупных партий возможно изготовление материалов под размеры заказчика.</p>
+        </div>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     6. КАЛЬКУЛЯТОР
      ============================================================ -->
 <section class="section section--alt" id="calc">
   <div class="container">
@@ -3273,11 +3505,19 @@ body.nav-open{
 
     </div>
 
-    <!-- FAQ -->
+  </div>
+</section>
+
+<!-- ============================================================
+     FAQ
+     ============================================================ -->
+<section class="section" id="faq">
+  <div class="container">
+
     <div class="faq-wrap">
       <div class="faq-head reveal">
         <span class="section-tag">FAQ</span>
-        <h2 class="section-title">Частые вопросы <span>от подрядчиков</span></h2>
+        <h2 class="section-title">Частые вопросы</h2>
       </div>
 
       <div class="faq-list reveal-group">
@@ -3480,7 +3720,7 @@ body.nav-open{
           </div>
 
           <div class="contact-map">
-            <iframe title="Производство PlastHard: Иваново, 11 проезд, дом 2" src="https://yandex.ru/map-widget/v1/?ll=41.041726%2C56.985469&amp;z=16&amp;l=map&amp;pt=41.041318%2C56.985200%2Cpm2rdm" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div id="contactMap" role="region" aria-label="Производство PlastHard: Иваново, 11 проезд, дом 2"></div>
           </div>
 
         </div>
@@ -3833,6 +4073,13 @@ body.nav-open{
     var cards = $$('.product-card', track);
     var slideIndex = 0;
 
+    cards.forEach(function (card) {
+      card.addEventListener('click', function () {
+        var btn = card.querySelector('[data-open-modal]');
+        if (btn) { openModal(btn.getAttribute('data-product')); }
+      });
+    });
+
     function getPerView() {
       var w = window.innerWidth;
       if (w > 960) { return 3; }
@@ -4023,10 +4270,14 @@ body.nav-open{
     custom: {
       title: 'Нестандартное применение',
       desc: 'Пласт ХАРД используют для утепления ульев, теплиц, входных дверей, применяют как траншейный утеплитель, как шумоизоляцию для трубопроводов. Материал применяют в спортивных залах в виде матов, в качестве защитных протекторов в батутных центрах и т.д.'
+    },
+    industrial: {
+      title: 'Промышленные объекты',
+      desc: 'На цехах, складах и производственных корпусах плиты закрывают кровлю, наружные стены и перегородки. Стандарт и Улучшенный держат тепло на больших пролётах и не теряют форму в каркасе. Пласт ХАРД ШУМ ставят у оборудования: плита снижает шум средних и высоких частот в перегородках, потолках и полах.'
     }
   };
 
-  var SCHEME_SCENE = { roof: 'house', wall: 'house', floor: 'house', flat: 'flat', banya: 'banya', tent: 'tent', custom: 'custom' };
+  var SCHEME_SCENE = { roof: 'house', wall: 'house', floor: 'house', flat: 'flat', banya: 'banya', tent: 'tent', custom: 'custom', industrial: 'industrial' };
 
   var SCHEME_PRODUCTS = [
     'Пласт ХАРД Стандарт · 50-200 мм',
@@ -4048,7 +4299,9 @@ body.nav-open{
     if (schemeTitle) { schemeTitle.textContent = data.title; }
     if (schemeDesc)  { schemeDesc.textContent = data.desc; }
     if (schemeProducts) {
-      var products = zoneKey === 'tent' ? SCHEME_PRODUCTS.slice(0, 1) : SCHEME_PRODUCTS;
+      var products = zoneKey === 'tent' ? SCHEME_PRODUCTS.slice(0, 1) : SCHEME_PRODUCTS.slice();
+      if (zoneKey === 'banya') { products.push('Межвенцовый утеплитель синтетический'); }
+      if (zoneKey === 'industrial') { products.push('Пласт ХАРД ШУМ'); }
       schemeProducts.replaceChildren.apply(schemeProducts, products.map(function (text) {
         var chip = document.createElement('div');
         chip.className = 'scheme-product';
@@ -4087,6 +4340,9 @@ body.nav-open{
   zoneEls.forEach(function (zone) {
     zone.addEventListener('mouseenter', function () {
       activateZone(zone.dataset.zone);
+    });
+    zone.addEventListener('mousedown', function (e) {
+      e.preventDefault();
     });
     zone.addEventListener('click', function () {
       activateZone(zone.dataset.zone);
@@ -4524,6 +4780,45 @@ body.nav-open{
       });
     });
   });
+
+  var contactMap = document.getElementById('contactMap');
+  if (contactMap) {
+    var mapStarted = false;
+    function loadContactMap() {
+      if (mapStarted) { return; }
+      mapStarted = true;
+      var script = document.createElement('script');
+      script.src = 'https://api-maps.yandex.ru/2.1/?apikey=b8cd1549-c5fa-452d-95b7-e7314fcd07a9&lang=ru_RU';
+      script.onload = function () {
+        if (!window.ymaps) { return; }
+        window.ymaps.ready(function () {
+          var map = new window.ymaps.Map('contactMap', {
+            center: [56.985200, 41.041318],
+            zoom: 16,
+            controls: ['zoomControl']
+          }, {
+            suppressMapOpenBlock: true
+          });
+          map.behaviors.disable('scrollZoom');
+          map.geoObjects.add(new window.ymaps.Placemark([56.985200, 41.041318], {
+            balloonContent: 'Производство PlastHard<br>Иваново, 11 проезд, д. 2'
+          }, {
+            preset: 'islands#redDotIcon'
+          }));
+        });
+      };
+      document.head.appendChild(script);
+    }
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries, obs) {
+        if (!entries[0].isIntersecting) { return; }
+        loadContactMap();
+        obs.disconnect();
+      }, { rootMargin: '200px' }).observe(contactMap);
+    } else {
+      loadContactMap();
+    }
+  }
 
 })();
 </script>
