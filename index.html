@@ -47,10 +47,10 @@
   --surface-2:#f1f5fa;
   --text:#0f2744;
   --muted:#5b7089;
-  --line:rgba(11,70,151,.18);
-  --cyan:#0B4697;
-  --cyan-bright:#BCE4FA;
-  --cyan-soft:#BCE4FA;
+  --line:rgba(14,123,168,.18);
+  --cyan:#0e7ba8;
+  --cyan-bright:#30b1e8;
+  --cyan-soft:rgba(14,123,168,.09);
   --burgundy:#990033;
   --burgundy-hover:#cc0044;
   --burgundy-soft:rgba(153,0,51,.08);
@@ -91,7 +91,7 @@ ul{ margin:0; padding:0; list-style:none; }
 
 ::-webkit-scrollbar{ width:10px; }
 ::-webkit-scrollbar-track{ background:var(--bg-alt); }
-::-webkit-scrollbar-thumb{ background:rgba(11,70,151,.35); border-radius:8px; }
+::-webkit-scrollbar-thumb{ background:rgba(14,123,168,.35); border-radius:8px; }
 ::-webkit-scrollbar-thumb:hover{ background:var(--cyan); }
 
 /* ============================================================
@@ -122,7 +122,7 @@ ul{ margin:0; padding:0; list-style:none; }
   display:inline-block;
   padding:6px 16px;
   margin-bottom:18px;
-  border:1px solid rgba(11,70,151,.28);
+  border:1px solid rgba(14,123,168,.28);
   border-radius:100px;
   font-size:12px;
   font-weight:700;
@@ -176,7 +176,7 @@ ul{ margin:0; padding:0; list-style:none; }
 .btn--ghost{
   background:#fff;
   color:var(--cyan);
-  border-color:rgba(11,70,151,.4);
+  border-color:rgba(14,123,168,.4);
   box-shadow:var(--shadow-sm);
 }
 .btn--ghost:hover{
@@ -228,7 +228,7 @@ ul{ margin:0; padding:0; list-style:none; }
 .header.scrolled{
   background:rgba(255,255,255,.96);
   box-shadow:0 10px 30px rgba(15,39,68,.08);
-  border-bottom-color:rgba(11,70,151,.16);
+  border-bottom-color:rgba(14,123,168,.16);
 }
 .header-inner{
   max-width:1240px;
@@ -294,7 +294,7 @@ ul{ margin:0; padding:0; list-style:none; }
   display:none;
   width:44px; height:44px;
   padding:0;
-  border:1px solid rgba(11,70,151,.28);
+  border:1px solid rgba(14,123,168,.28);
   border-radius:11px;
   background:#fff;
   cursor:pointer;
@@ -325,7 +325,7 @@ ul{ margin:0; padding:0; list-style:none; }
   padding:160px 0 110px;
   overflow:hidden;
   background:
-    radial-gradient(1100px 620px at 78% 12%, #BCE4FA 0%, transparent 60%),
+    radial-gradient(1100px 620px at 78% 12%, rgba(48,177,232,.18) 0%, transparent 60%),
     radial-gradient(900px 640px at 8% 88%, rgba(153,0,51,.09) 0%, transparent 62%),
     linear-gradient(180deg, #f9fbfe 0%, var(--bg) 60%, var(--bg-alt) 100%);
 }
@@ -351,7 +351,7 @@ ul{ margin:0; padding:0; list-style:none; }
 .hero-orb--1{
   width:420px; height:420px;
   top:-90px; right:-80px;
-  background:#BCE4FA;
+  background:rgba(48,177,232,.28);
 }
 .hero-orb--2{
   width:380px; height:380px;
@@ -377,7 +377,7 @@ ul{ margin:0; padding:0; list-style:none; }
   gap:10px;
   padding:7px 16px 7px 8px;
   margin-bottom:26px;
-  border:1px solid rgba(11,70,151,.24);
+  border:1px solid rgba(14,123,168,.24);
   border-radius:100px;
   background:#fff;
   box-shadow:var(--shadow-sm);
@@ -407,7 +407,7 @@ ul{ margin:0; padding:0; list-style:none; }
   color:var(--text);
 }
 .hero-title .accent{
-  background:linear-gradient(100deg, var(--cyan) 0%, #0B4697 100%);
+  background:linear-gradient(100deg, var(--cyan) 0%, #16a4d4 100%);
   -webkit-background-clip:text;
   background-clip:text;
   -webkit-text-fill-color:transparent;
@@ -472,7 +472,7 @@ ul{ margin:0; padding:0; list-style:none; }
   position:absolute;
   width:340px; height:340px;
   border-radius:50%;
-  background:radial-gradient(circle, #BCE4FA 0%, transparent 68%);
+  background:radial-gradient(circle, rgba(48,177,232,.22) 0%, transparent 68%);
   filter:blur(28px);
   pointer-events:none;
 }
@@ -506,7 +506,7 @@ ul{ margin:0; padding:0; list-style:none; }
   white-space:nowrap;
   backdrop-filter:blur(10px);
   -webkit-backdrop-filter:blur(10px);
-  border:1px solid rgba(11,70,151,.28);
+  border:1px solid rgba(14,123,168,.28);
   background:rgba(255,255,255,.94);
   color:var(--cyan);
   box-shadow:0 12px 28px rgba(15,39,68,.12);
@@ -566,7 +566,7 @@ ul{ margin:0; padding:0; list-style:none; }
 }
 .fact-card:hover{
   transform:translateY(-6px);
-  border-color:rgba(11,70,151,.35);
+  border-color:rgba(14,123,168,.35);
   box-shadow:var(--shadow-md);
 }
 .fact-icon{
@@ -574,7 +574,7 @@ ul{ margin:0; padding:0; list-style:none; }
   display:flex; align-items:center; justify-content:center;
   border-radius:12px;
   background:var(--cyan-soft);
-  border:1px solid rgba(11,70,151,.24);
+  border:1px solid rgba(14,123,168,.24);
   margin-bottom:16px;
   color:var(--cyan);
 }
@@ -643,7 +643,7 @@ ul{ margin:0; padding:0; list-style:none; }
   align-items:center;
   justify-content:center;
   border-bottom:1px solid rgba(15,39,68,.07);
-  background:#0B4697;
+  background:#0c6fbe;
 }
 .product-visual img{
   position:relative;
@@ -664,8 +664,8 @@ ul{ margin:0; padding:0; list-style:none; }
     linear-gradient(90deg, rgba(15,39,68,.05) 1px, transparent 1px);
   background-size:22px 22px;
 }
-.pv--light{ background:radial-gradient(circle at 50% 40%, #BCE4FA 0%, rgba(234,241,248,.9) 72%); }
-.pv--vent{ background:radial-gradient(circle at 50% 40%, #BCE4FA 0%, rgba(226,238,248,.92) 72%); }
+.pv--light{ background:radial-gradient(circle at 50% 40%, rgba(48,177,232,.28) 0%, rgba(234,241,248,.9) 72%); }
+.pv--vent{ background:radial-gradient(circle at 50% 40%, rgba(48,177,232,.42) 0%, rgba(226,238,248,.92) 72%); }
 .pv--solid{ background:radial-gradient(circle at 50% 40%, rgba(153,0,51,.34) 0%, rgba(240,234,238,.94) 74%); }
 
 .product-slab{
@@ -679,14 +679,14 @@ ul{ margin:0; padding:0; list-style:none; }
   border:1px solid rgba(255,255,255,.5);
   background-image:
     repeating-linear-gradient(45deg, rgba(255,255,255,.16) 0 2px, transparent 2px 8px),
-    linear-gradient(135deg, #BCE4FA 0%, #0B4697 100%);
+    linear-gradient(135deg, rgba(48,177,232,.95) 0%, rgba(20,90,130,.98) 100%);
 }
 .product-slab--light{ background-image:
     repeating-linear-gradient(45deg, rgba(255,255,255,.18) 0 2px, transparent 2px 9px),
-    linear-gradient(135deg, #BCE4FA 0%, #0B4697 100%); }
+    linear-gradient(135deg, rgba(70,190,235,.95) 0%, rgba(30,100,140,.98) 100%); }
 .product-slab--vent{ height:110px; background-image:
     repeating-linear-gradient(45deg, rgba(255,255,255,.2) 0 2px, transparent 2px 7px),
-    linear-gradient(135deg, #BCE4FA 0%, #0B4697 100%); }
+    linear-gradient(135deg, rgba(90,205,245,.98) 0%, rgba(20,95,130,.98) 100%); }
 .product-slab--solid{ height:122px; background-image:
     repeating-linear-gradient(45deg, rgba(255,255,255,.14) 0 2px, transparent 2px 8px),
     linear-gradient(135deg, rgba(204,0,68,.96) 0%, rgba(110,0,40,.98) 100%); }
@@ -727,7 +727,7 @@ ul{ margin:0; padding:0; list-style:none; }
 .spec-pill{
   padding:5px 12px;
   border-radius:100px;
-  border:1px solid rgba(11,70,151,.22);
+  border:1px solid rgba(14,123,168,.22);
   background:var(--cyan-soft);
   font-size:11.5px;
   font-weight:700;
@@ -766,7 +766,7 @@ ul{ margin:0; padding:0; list-style:none; }
 .slider-btn{
   width:52px; height:52px;
   border-radius:50%;
-  border:1px solid rgba(11,70,151,.28);
+  border:1px solid rgba(14,123,168,.28);
   background:#fff;
   color:var(--cyan);
   cursor:pointer;
@@ -781,7 +781,7 @@ ul{ margin:0; padding:0; list-style:none; }
   background:var(--cyan);
   border-color:var(--cyan);
   color:#fff;
-  box-shadow:0 8px 20px rgba(11,70,151,.28);
+  box-shadow:0 8px 20px rgba(14,123,168,.28);
 }
 .slider-btn:disabled{ opacity:.35; cursor:not-allowed; }
 .slider-dots{
@@ -840,7 +840,7 @@ ul{ margin:0; padding:0; list-style:none; }
 
 .zone{
   fill:#ffffff;
-  stroke:rgba(11,70,151,.4);
+  stroke:rgba(14,123,168,.4);
   stroke-width:1.6;
   cursor:pointer;
   outline:none;
@@ -858,7 +858,7 @@ ul{ margin:0; padding:0; list-style:none; }
 }
 .house-detail{ pointer-events:none; }
 .ground-line{
-  stroke:rgba(11,70,151,.28);
+  stroke:rgba(14,123,168,.28);
   stroke-width:1.5;
   pointer-events:none;
 }
@@ -885,7 +885,7 @@ ul{ margin:0; padding:0; list-style:none; }
 }
 .scheme-panel-inner.pulse{
   border-color:var(--cyan);
-  box-shadow:0 0 0 1px rgba(11,70,151,.35), var(--shadow-md);
+  box-shadow:0 0 0 1px rgba(14,123,168,.35), var(--shadow-md);
 }
 .scheme-hint{
   font-size:12.5px;
@@ -927,7 +927,7 @@ ul{ margin:0; padding:0; list-style:none; }
   padding:10px 14px;
   border-radius:100px;
   background:var(--cyan-soft);
-  border:1px solid rgba(11,70,151,.32);
+  border:1px solid rgba(14,123,168,.32);
   color:var(--cyan);
   font-weight:800;
   font-size:13px;
@@ -945,7 +945,7 @@ ul{ margin:0; padding:0; list-style:none; }
 .scheme-tab{
   padding:10px 18px;
   border-radius:100px;
-  border:1px solid rgba(11,70,151,.24);
+  border:1px solid rgba(14,123,168,.24);
   background:#fff;
   color:var(--muted);
   font-size:13.5px;
@@ -961,17 +961,17 @@ ul{ margin:0; padding:0; list-style:none; }
   text-align:center;
   line-height:1.35;
 }
-.scheme-tab:hover{ color:var(--cyan); border-color:rgba(11,70,151,.5); }
+.scheme-tab:hover{ color:var(--cyan); border-color:rgba(14,123,168,.5); }
 .scheme-tab.active{
   background:var(--cyan);
   border-color:var(--cyan);
   color:#fff;
-  box-shadow:0 8px 20px rgba(11,70,151,.28);
+  box-shadow:0 8px 20px rgba(14,123,168,.28);
 }
 .scheme-more{
   padding:10px 18px;
   border-radius:100px;
-  border:1px dashed rgba(11,70,151,.45);
+  border:1px dashed rgba(14,123,168,.45);
   background:transparent;
   color:var(--cyan);
   font-size:13.5px;
@@ -1008,14 +1008,14 @@ ul{ margin:0; padding:0; list-style:none; }
   top:-60%; right:-40%;
   width:200px; height:200px;
   border-radius:50%;
-  background:radial-gradient(circle, #BCE4FA 0%, transparent 70%);
+  background:radial-gradient(circle, rgba(48,177,232,.18) 0%, transparent 70%);
   opacity:0;
   transition:opacity .4s ease;
   pointer-events:none;
 }
 .adv-card:hover{
   transform:translateY(-8px);
-  border-color:rgba(11,70,151,.35);
+  border-color:rgba(14,123,168,.35);
   box-shadow:var(--shadow-lg);
 }
 .adv-card:hover::after{ opacity:1; }
@@ -1025,7 +1025,7 @@ ul{ margin:0; padding:0; list-style:none; }
   letter-spacing:-.035em;
   line-height:1;
   margin-bottom:12px;
-  background:linear-gradient(120deg, var(--cyan) 0%, #0B4697 100%);
+  background:linear-gradient(120deg, var(--cyan) 0%, #16a4d4 100%);
   -webkit-background-clip:text;
   background-clip:text;
   -webkit-text-fill-color:transparent;
@@ -1075,7 +1075,7 @@ ul{ margin:0; padding:0; list-style:none; }
 .audience-card:nth-child(5){ grid-column:span 3; }
 .audience-card:hover{
   transform:translateY(-8px);
-  border-color:rgba(11,70,151,.35);
+  border-color:rgba(14,123,168,.35);
   box-shadow:var(--shadow-lg);
 }
 .audience-icon{
@@ -1086,7 +1086,7 @@ ul{ margin:0; padding:0; list-style:none; }
   justify-content:center;
   margin-bottom:16px;
   border-radius:12px;
-  border:1px solid rgba(11,70,151,.24);
+  border:1px solid rgba(14,123,168,.24);
   background:var(--cyan-soft);
   color:var(--cyan);
   flex:0 0 auto;
@@ -1266,7 +1266,7 @@ ul{ margin:0; padding:0; list-style:none; }
   justify-content:center;
   border-radius:12px;
   background:#fff;
-  border:1px solid rgba(11,70,151,.28);
+  border:1px solid rgba(14,123,168,.28);
   color:var(--cyan);
 }
 .supply-mark svg{
@@ -1315,7 +1315,7 @@ ul{ margin:0; padding:0; list-style:none; }
 }
 .service-card:hover{
   transform:translateY(-8px);
-  border-color:rgba(11,70,151,.35);
+  border-color:rgba(14,123,168,.35);
   box-shadow:var(--shadow-lg);
 }
 .service-icon{
@@ -1389,7 +1389,7 @@ ul{ margin:0; padding:0; list-style:none; }
   width:9px; height:9px;
   border-radius:50%;
   background:var(--cyan);
-  box-shadow:0 0 12px rgba(11,70,151,.5);
+  box-shadow:0 0 12px rgba(14,123,168,.5);
   flex-shrink:0;
 }
 
@@ -1423,7 +1423,7 @@ ul{ margin:0; padding:0; list-style:none; }
   appearance:none;
 }
 .field select{
-  background-image:url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230B4697' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-image:url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230e7ba8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
   background-repeat:no-repeat;
   background-position:right 14px center;
   background-size:18px;
@@ -1436,7 +1436,7 @@ ul{ margin:0; padding:0; list-style:none; }
 .field select:focus,
 .field textarea:focus{
   border-color:var(--cyan);
-  box-shadow:0 0 0 3px rgba(11,70,151,.14);
+  box-shadow:0 0 0 3px rgba(14,123,168,.14);
   background:#fff;
 }
 .field input::placeholder,
@@ -1538,7 +1538,7 @@ ul{ margin:0; padding:0; list-style:none; }
 }
 .faq-item.open{
   border-color:var(--cyan);
-  box-shadow:0 8px 20px rgba(11,70,151,.28);
+  box-shadow:0 8px 20px rgba(14,123,168,.28);
 }
 .faq-q{
   width:100%;
@@ -1564,7 +1564,7 @@ ul{ margin:0; padding:0; list-style:none; }
   flex-shrink:0;
   width:30px; height:30px;
   border-radius:50%;
-  border:1px solid rgba(11,70,151,.35);
+  border:1px solid rgba(14,123,168,.35);
   display:flex;
   align-items:center;
   justify-content:center;
@@ -1580,7 +1580,7 @@ ul{ margin:0; padding:0; list-style:none; }
   background:var(--cyan);
   border-color:var(--cyan);
   color:#fff;
-  box-shadow:0 8px 20px rgba(11,70,151,.28);
+  box-shadow:0 8px 20px rgba(14,123,168,.28);
 }
 .faq-a{
   max-height:0;
@@ -1633,7 +1633,7 @@ ul{ margin:0; padding:0; list-style:none; }
   align-items:center;
   justify-content:center;
   background:var(--cyan-soft);
-  border:1px solid rgba(11,70,151,.22);
+  border:1px solid rgba(14,123,168,.22);
   color:var(--cyan);
 }
 .contact-item .label{
@@ -1674,7 +1674,7 @@ ul{ margin:0; padding:0; list-style:none; }
   min-height:44px;
   padding:10px 16px;
   border-radius:12px;
-  border:1px solid rgba(11,70,151,.4);
+  border:1px solid rgba(14,123,168,.4);
   background:#fff;
   color:var(--cyan);
   font-size:14px;
@@ -1744,7 +1744,7 @@ ul{ margin:0; padding:0; list-style:none; }
   width:20px; height:20px;
   margin-top:2px;
   border-radius:6px;
-  border:1.5px solid rgba(11,70,151,.4);
+  border:1.5px solid rgba(14,123,168,.4);
   background:#fff;
   display:flex;
   align-items:center;
@@ -1772,7 +1772,7 @@ ul{ margin:0; padding:0; list-style:none; }
   display:none;
   padding:16px 20px;
   border-radius:12px;
-  border:1px solid rgba(11,70,151,.4);
+  border:1px solid rgba(14,123,168,.4);
   background:var(--cyan-soft);
   color:var(--cyan);
   font-size:14px;
@@ -1941,7 +1941,7 @@ ul{ margin:0; padding:0; list-style:none; }
   width:52px;
   height:52px;
   padding:0;
-  border:1px solid rgba(11,70,151,.28);
+  border:1px solid rgba(14,123,168,.28);
   border-radius:50%;
   background:#fff;
   color:var(--cyan);
@@ -1964,7 +1964,7 @@ ul{ margin:0; padding:0; list-style:none; }
   background:var(--cyan);
   border-color:var(--cyan);
   color:#fff;
-  box-shadow:0 8px 20px rgba(11,70,151,.28);
+  box-shadow:0 8px 20px rgba(14,123,168,.28);
 }
 .to-top:focus-visible{
   outline:2px solid var(--cyan);
@@ -2110,7 +2110,7 @@ body.nav-open{
     z-index:1100;
     padding:16px 20px 24px;
     background:#fff;
-    border-bottom:1px solid rgba(11,70,151,.18);
+    border-bottom:1px solid rgba(14,123,168,.18);
     box-shadow:0 24px 48px rgba(15,39,68,.12);
     transform:translateY(-14px);
     opacity:0;
@@ -2619,7 +2619,7 @@ body.nav-open{
               <stop offset="100%" stop-color="#b9e4f4"/>
             </linearGradient>
             <pattern id="schemeHatch" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-              <line x1="0" y1="0" x2="0" y2="9" stroke="rgba(11,70,151,0.45)" stroke-width="1.6"/>
+              <line x1="0" y1="0" x2="0" y2="9" stroke="rgba(14,123,168,0.45)" stroke-width="1.6"/>
             </pattern>
             <clipPath id="schemeAboveRoof">
               <polygon points="0,0 620,0 620,196 524,196 310,58 96,196 0,196"/>
@@ -2631,8 +2631,8 @@ body.nav-open{
 
           <rect width="620" height="480" fill="url(#schemeSky)"/>
 
-          <circle cx="508" cy="74" r="42" fill="#BCE4FA"/>
-          <circle cx="508" cy="74" r="26" fill="#BCE4FA"/>
+          <circle cx="508" cy="74" r="42" fill="rgba(48,177,232,0.16)"/>
+          <circle cx="508" cy="74" r="26" fill="rgba(48,177,232,0.18)"/>
           <g fill="rgba(255,255,255,0.85)">
             <ellipse cx="118" cy="86" rx="34" ry="16"/>
             <ellipse cx="146" cy="80" rx="26" ry="18"/>
@@ -2657,19 +2657,19 @@ body.nav-open{
 
           <g class="house-detail">
             <polygon points="132,186 310,86 488,186" fill="url(#schemeHatch)" opacity="0.55"/>
-            <polygon points="96,196 128,196 128,208 112,208" fill="rgba(11,70,151,0.18)"/>
-            <polygon points="524,196 492,196 492,208 508,208" fill="rgba(11,70,151,0.18)"/>
+            <polygon points="96,196 128,196 128,208 112,208" fill="rgba(14,123,168,0.18)"/>
+            <polygon points="524,196 492,196 492,208 508,208" fill="rgba(14,123,168,0.18)"/>
             <rect x="128" y="196" width="364" height="10" fill="rgba(15,39,68,0.05)"/>
 
             <g clip-path="url(#schemeAboveRoof)">
-              <rect x="404" y="86" width="36" height="14" rx="2" fill="#f7fbfe" stroke="#0B4697" stroke-width="1.6"/>
-              <rect x="410" y="98" width="24" height="58" fill="#f7fbfe" stroke="#0B4697" stroke-width="1.6"/>
-              <line x1="410" y1="116" x2="434" y2="116" stroke="rgba(11,70,151,0.45)" stroke-width="1.4"/>
-              <line x1="410" y1="132" x2="434" y2="132" stroke="rgba(11,70,151,0.45)" stroke-width="1.4"/>
+              <rect x="404" y="86" width="36" height="14" rx="2" fill="#f7fbfe" stroke="#0e7ba8" stroke-width="1.6"/>
+              <rect x="410" y="98" width="24" height="58" fill="#f7fbfe" stroke="#0e7ba8" stroke-width="1.6"/>
+              <line x1="410" y1="116" x2="434" y2="116" stroke="rgba(14,123,168,0.45)" stroke-width="1.4"/>
+              <line x1="410" y1="132" x2="434" y2="132" stroke="rgba(14,123,168,0.45)" stroke-width="1.4"/>
             </g>
 
             <g>
-              <rect x="164" y="236" width="84" height="74" rx="3" fill="#ffffff" stroke="#0B4697" stroke-width="1.8"/>
+              <rect x="164" y="236" width="84" height="74" rx="3" fill="#ffffff" stroke="#0e7ba8" stroke-width="1.8"/>
               <rect x="170" y="242" width="34" height="28" fill="url(#schemeGlass)"/>
               <rect x="208" y="242" width="34" height="28" fill="url(#schemeGlass)"/>
               <rect x="170" y="274" width="34" height="28" fill="url(#schemeGlass)"/>
@@ -2677,7 +2677,7 @@ body.nav-open{
               <path d="M174 248 L196 242" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round"/>
               <rect x="176" y="308" width="60" height="6" rx="1" fill="#d5e3ee"/>
 
-              <rect x="372" y="236" width="84" height="74" rx="3" fill="#ffffff" stroke="#0B4697" stroke-width="1.8"/>
+              <rect x="372" y="236" width="84" height="74" rx="3" fill="#ffffff" stroke="#0e7ba8" stroke-width="1.8"/>
               <rect x="378" y="242" width="34" height="28" fill="url(#schemeGlass)"/>
               <rect x="416" y="242" width="34" height="28" fill="url(#schemeGlass)"/>
               <rect x="378" y="274" width="34" height="28" fill="url(#schemeGlass)"/>
@@ -2697,8 +2697,8 @@ body.nav-open{
             <rect x="108" y="364" width="404" height="14" fill="rgba(255,255,255,0.55)"/>
             <rect x="108" y="378" width="404" height="28" fill="url(#schemeHatch)" opacity="0.7"/>
             <rect x="108" y="406" width="404" height="20" fill="rgba(15,39,68,0.06)"/>
-            <line x1="108" y1="378" x2="512" y2="378" stroke="rgba(11,70,151,0.4)" stroke-width="1.3"/>
-            <line x1="108" y1="406" x2="512" y2="406" stroke="rgba(11,70,151,0.4)" stroke-width="1.3"/>
+            <line x1="108" y1="378" x2="512" y2="378" stroke="rgba(14,123,168,0.4)" stroke-width="1.3"/>
+            <line x1="108" y1="406" x2="512" y2="406" stroke="rgba(14,123,168,0.4)" stroke-width="1.3"/>
 
             <line class="ground-line" x1="28" y1="418" x2="108" y2="418"/>
             <line class="ground-line" x1="512" y1="418" x2="592" y2="418"/>
@@ -2721,10 +2721,10 @@ body.nav-open{
               <stop offset="100%" stop-color="#eef4f9"/>
             </linearGradient>
             <pattern id="aptHatch" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-              <line x1="0" y1="0" x2="0" y2="9" stroke="rgba(11,70,151,0.45)" stroke-width="1.6"/>
+              <line x1="0" y1="0" x2="0" y2="9" stroke="rgba(14,123,168,0.45)" stroke-width="1.6"/>
             </pattern>
             <symbol id="aptWindow" viewBox="0 0 44 46">
-              <rect width="44" height="40" rx="3" fill="#ffffff" stroke="#0B4697" stroke-width="1.8"/>
+              <rect width="44" height="40" rx="3" fill="#ffffff" stroke="#0e7ba8" stroke-width="1.8"/>
               <rect x="4" y="4" width="16" height="14" fill="url(#aptGlass)"/>
               <rect x="24" y="4" width="16" height="14" fill="url(#aptGlass)"/>
               <rect x="4" y="22" width="16" height="14" fill="url(#aptGlass)"/>
@@ -2735,8 +2735,8 @@ body.nav-open{
           </defs>
 
           <rect width="620" height="480" fill="url(#aptSky)"/>
-          <circle cx="86" cy="78" r="36" fill="#BCE4FA"/>
-          <circle cx="86" cy="78" r="22" fill="#BCE4FA"/>
+          <circle cx="86" cy="78" r="36" fill="rgba(48,177,232,0.16)"/>
+          <circle cx="86" cy="78" r="22" fill="rgba(48,177,232,0.18)"/>
           <g fill="rgba(255,255,255,0.85)">
             <ellipse cx="500" cy="70" rx="34" ry="15"/>
             <ellipse cx="528" cy="64" rx="24" ry="16"/>
@@ -2746,13 +2746,13 @@ body.nav-open{
           <rect x="0" y="412" width="620" height="68" fill="#e3eef6"/>
           <ellipse cx="318" cy="418" rx="210" ry="12" fill="rgba(15,39,68,0.07)"/>
 
-          <rect x="168" y="86" width="292" height="326" fill="url(#aptWall)" stroke="#0B4697" stroke-width="1.8"/>
-          <rect x="154" y="70" width="320" height="22" rx="3" fill="#ffffff" stroke="#0B4697" stroke-width="1.8"/>
+          <rect x="168" y="86" width="292" height="326" fill="url(#aptWall)" stroke="#0e7ba8" stroke-width="1.8"/>
+          <rect x="154" y="70" width="320" height="22" rx="3" fill="#ffffff" stroke="#0e7ba8" stroke-width="1.8"/>
           <rect x="176" y="96" width="276" height="16" fill="url(#aptHatch)" opacity="0.55"/>
 
-          <line x1="168" y1="176" x2="460" y2="176" stroke="rgba(11,70,151,0.4)" stroke-width="1.4"/>
-          <line x1="168" y1="254" x2="460" y2="254" stroke="rgba(11,70,151,0.4)" stroke-width="1.4"/>
-          <line x1="168" y1="332" x2="460" y2="332" stroke="rgba(11,70,151,0.4)" stroke-width="1.4"/>
+          <line x1="168" y1="176" x2="460" y2="176" stroke="rgba(14,123,168,0.4)" stroke-width="1.4"/>
+          <line x1="168" y1="254" x2="460" y2="254" stroke="rgba(14,123,168,0.4)" stroke-width="1.4"/>
+          <line x1="168" y1="332" x2="460" y2="332" stroke="rgba(14,123,168,0.4)" stroke-width="1.4"/>
 
           <use href="#aptWindow" x="190" y="112" width="44" height="46"/>
           <use href="#aptWindow" x="248" y="112" width="44" height="46"/>
@@ -2770,25 +2770,25 @@ body.nav-open{
           <use href="#aptWindow" x="406" y="268" width="44" height="46"/>
 
           <g>
-            <rect x="460" y="116" width="52" height="52" fill="rgba(255,255,255,0.45)" stroke="#0B4697" stroke-width="1.6"/>
-            <line x1="460" y1="132" x2="512" y2="132" stroke="#0B4697" stroke-width="1.4"/>
-            <line x1="478" y1="116" x2="478" y2="168" stroke="rgba(11,70,151,0.45)" stroke-width="1.3"/>
-            <line x1="496" y1="116" x2="496" y2="168" stroke="rgba(11,70,151,0.45)" stroke-width="1.3"/>
-            <rect x="456" y="168" width="60" height="8" rx="1" fill="#d7e6f1" stroke="#0B4697" stroke-width="1.3"/>
+            <rect x="460" y="116" width="52" height="52" fill="rgba(255,255,255,0.45)" stroke="#0e7ba8" stroke-width="1.6"/>
+            <line x1="460" y1="132" x2="512" y2="132" stroke="#0e7ba8" stroke-width="1.4"/>
+            <line x1="478" y1="116" x2="478" y2="168" stroke="rgba(14,123,168,0.45)" stroke-width="1.3"/>
+            <line x1="496" y1="116" x2="496" y2="168" stroke="rgba(14,123,168,0.45)" stroke-width="1.3"/>
+            <rect x="456" y="168" width="60" height="8" rx="1" fill="#d7e6f1" stroke="#0e7ba8" stroke-width="1.3"/>
           </g>
           <g>
-            <rect x="460" y="194" width="52" height="52" fill="rgba(255,255,255,0.45)" stroke="#0B4697" stroke-width="1.6"/>
-            <line x1="460" y1="210" x2="512" y2="210" stroke="#0B4697" stroke-width="1.4"/>
-            <line x1="478" y1="194" x2="478" y2="246" stroke="rgba(11,70,151,0.45)" stroke-width="1.3"/>
-            <line x1="496" y1="194" x2="496" y2="246" stroke="rgba(11,70,151,0.45)" stroke-width="1.3"/>
-            <rect x="456" y="246" width="60" height="8" rx="1" fill="#d7e6f1" stroke="#0B4697" stroke-width="1.3"/>
+            <rect x="460" y="194" width="52" height="52" fill="rgba(255,255,255,0.45)" stroke="#0e7ba8" stroke-width="1.6"/>
+            <line x1="460" y1="210" x2="512" y2="210" stroke="#0e7ba8" stroke-width="1.4"/>
+            <line x1="478" y1="194" x2="478" y2="246" stroke="rgba(14,123,168,0.45)" stroke-width="1.3"/>
+            <line x1="496" y1="194" x2="496" y2="246" stroke="rgba(14,123,168,0.45)" stroke-width="1.3"/>
+            <rect x="456" y="246" width="60" height="8" rx="1" fill="#d7e6f1" stroke="#0e7ba8" stroke-width="1.3"/>
           </g>
           <g>
-            <rect x="460" y="272" width="52" height="52" fill="rgba(255,255,255,0.45)" stroke="#0B4697" stroke-width="1.6"/>
-            <line x1="460" y1="288" x2="512" y2="288" stroke="#0B4697" stroke-width="1.4"/>
-            <line x1="478" y1="272" x2="478" y2="324" stroke="rgba(11,70,151,0.45)" stroke-width="1.3"/>
-            <line x1="496" y1="272" x2="496" y2="324" stroke="rgba(11,70,151,0.45)" stroke-width="1.3"/>
-            <rect x="456" y="324" width="60" height="8" rx="1" fill="#d7e6f1" stroke="#0B4697" stroke-width="1.3"/>
+            <rect x="460" y="272" width="52" height="52" fill="rgba(255,255,255,0.45)" stroke="#0e7ba8" stroke-width="1.6"/>
+            <line x1="460" y1="288" x2="512" y2="288" stroke="#0e7ba8" stroke-width="1.4"/>
+            <line x1="478" y1="272" x2="478" y2="324" stroke="rgba(14,123,168,0.45)" stroke-width="1.3"/>
+            <line x1="496" y1="272" x2="496" y2="324" stroke="rgba(14,123,168,0.45)" stroke-width="1.3"/>
+            <rect x="456" y="324" width="60" height="8" rx="1" fill="#d7e6f1" stroke="#0e7ba8" stroke-width="1.3"/>
           </g>
 
           <use href="#aptWindow" x="190" y="348" width="44" height="46"/>
@@ -2802,12 +2802,12 @@ body.nav-open{
             <rect x="360" y="406" width="68" height="6" rx="1" fill="#d7e3ee"/>
           </g>
 
-          <rect x="196" y="48" width="16" height="22" rx="1" fill="#f7fbfe" stroke="#0B4697" stroke-width="1.5"/>
-          <rect x="220" y="56" width="12" height="14" rx="1" fill="#f7fbfe" stroke="#0B4697" stroke-width="1.5"/>
+          <rect x="196" y="48" width="16" height="22" rx="1" fill="#f7fbfe" stroke="#0e7ba8" stroke-width="1.5"/>
+          <rect x="220" y="56" width="12" height="14" rx="1" fill="#f7fbfe" stroke="#0e7ba8" stroke-width="1.5"/>
 
           <g>
             <path d="M72 412V364" stroke="#8eabbf" stroke-width="6" stroke-linecap="round"/>
-            <path d="M72 372c-26 2-38-16-28-34-14-6-14-26 2-34 2-16 22-26 36-14 12-12 36-6 36 12 16 4 22 24 8 36 10 14-2 32-20 30-6 8-22 10-34 4z" fill="rgba(11,70,151,0.15)" stroke="#0B4697" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M72 372c-26 2-38-16-28-34-14-6-14-26 2-34 2-16 22-26 36-14 12-12 36-6 36 12 16 4 22 24 8 36 10 14-2 32-20 30-6 8-22 10-34 4z" fill="rgba(14,123,168,0.15)" stroke="#0e7ba8" stroke-width="1.5" stroke-linejoin="round"/>
           </g>
           <line class="ground-line" x1="36" y1="412" x2="168" y2="412"/>
           <line class="ground-line" x1="460" y1="412" x2="584" y2="412"/>
@@ -2828,13 +2828,13 @@ body.nav-open{
               <stop offset="100%" stop-color="#eef4f9"/>
             </linearGradient>
             <pattern id="banyaHatch" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-              <line x1="0" y1="0" x2="0" y2="9" stroke="rgba(11,70,151,0.45)" stroke-width="1.6"/>
+              <line x1="0" y1="0" x2="0" y2="9" stroke="rgba(14,123,168,0.45)" stroke-width="1.6"/>
             </pattern>
           </defs>
 
           <rect width="620" height="480" fill="url(#banyaSky)"/>
-          <circle cx="300" cy="68" r="32" fill="#BCE4FA"/>
-          <circle cx="300" cy="68" r="18" fill="#BCE4FA"/>
+          <circle cx="300" cy="68" r="32" fill="rgba(48,177,232,0.16)"/>
+          <circle cx="300" cy="68" r="18" fill="rgba(48,177,232,0.18)"/>
           <g fill="rgba(255,255,255,0.85)">
             <ellipse cx="92" cy="62" rx="28" ry="12"/>
             <ellipse cx="116" cy="56" rx="20" ry="13"/>
@@ -2845,20 +2845,20 @@ body.nav-open{
           <ellipse cx="300" cy="418" rx="240" ry="11" fill="rgba(15,39,68,0.07)"/>
 
           <g>
-            <polygon points="52,246 166,124 280,246" fill="url(#banyaWall)" stroke="#0B4697" stroke-width="1.8" stroke-linejoin="round"/>
+            <polygon points="52,246 166,124 280,246" fill="url(#banyaWall)" stroke="#0e7ba8" stroke-width="1.8" stroke-linejoin="round"/>
             <polygon points="108,228 166,168 224,228" fill="url(#banyaHatch)" opacity="0.4"/>
-            <rect x="150" y="176" width="32" height="26" rx="2" fill="#ffffff" stroke="#0B4697" stroke-width="1.5"/>
+            <rect x="150" y="176" width="32" height="26" rx="2" fill="#ffffff" stroke="#0e7ba8" stroke-width="1.5"/>
             <rect x="156" y="182" width="8" height="8" fill="url(#banyaGlass)"/>
             <rect x="168" y="182" width="8" height="8" fill="url(#banyaGlass)"/>
             <rect x="156" y="192" width="8" height="6" fill="url(#banyaGlass)"/>
             <rect x="168" y="192" width="8" height="6" fill="url(#banyaGlass)"/>
-            <rect x="78" y="246" width="176" height="154" fill="url(#banyaWall)" stroke="#0B4697" stroke-width="1.8"/>
-            <rect x="96" y="278" width="42" height="36" rx="2" fill="#ffffff" stroke="#0B4697" stroke-width="1.6"/>
+            <rect x="78" y="246" width="176" height="154" fill="url(#banyaWall)" stroke="#0e7ba8" stroke-width="1.8"/>
+            <rect x="96" y="278" width="42" height="36" rx="2" fill="#ffffff" stroke="#0e7ba8" stroke-width="1.6"/>
             <rect x="102" y="284" width="12" height="12" fill="url(#banyaGlass)"/>
             <rect x="118" y="284" width="12" height="12" fill="url(#banyaGlass)"/>
             <rect x="102" y="298" width="12" height="10" fill="url(#banyaGlass)"/>
             <rect x="118" y="298" width="12" height="10" fill="url(#banyaGlass)"/>
-            <rect x="186" y="278" width="42" height="36" rx="2" fill="#ffffff" stroke="#0B4697" stroke-width="1.6"/>
+            <rect x="186" y="278" width="42" height="36" rx="2" fill="#ffffff" stroke="#0e7ba8" stroke-width="1.6"/>
             <rect x="192" y="284" width="12" height="12" fill="url(#banyaGlass)"/>
             <rect x="208" y="284" width="12" height="12" fill="url(#banyaGlass)"/>
             <rect x="192" y="298" width="12" height="10" fill="url(#banyaGlass)"/>
@@ -2871,21 +2871,21 @@ body.nav-open{
           </g>
 
           <g>
-            <polygon points="352,286 470,176 588,286" fill="url(#banyaWall)" stroke="#0B4697" stroke-width="1.8" stroke-linejoin="round"/>
-            <rect x="376" y="286" width="188" height="114" fill="url(#banyaWall)" stroke="#0B4697" stroke-width="1.8"/>
-            <line x1="376" y1="306" x2="564" y2="306" stroke="rgba(11,70,151,0.4)" stroke-width="1.3"/>
-            <line x1="376" y1="326" x2="564" y2="326" stroke="rgba(11,70,151,0.4)" stroke-width="1.3"/>
-            <line x1="376" y1="346" x2="564" y2="346" stroke="rgba(11,70,151,0.4)" stroke-width="1.3"/>
-            <line x1="376" y1="366" x2="564" y2="366" stroke="rgba(11,70,151,0.4)" stroke-width="1.3"/>
-            <line x1="376" y1="386" x2="564" y2="386" stroke="rgba(11,70,151,0.4)" stroke-width="1.3"/>
-            <rect x="456" y="148" width="20" height="58" rx="1" fill="#f7fbfe" stroke="#0B4697" stroke-width="1.6"/>
-            <rect x="448" y="140" width="36" height="12" rx="2" fill="#ffffff" stroke="#0B4697" stroke-width="1.6"/>
-            <g fill="rgba(255,255,255,0.92)" stroke="rgba(11,70,151,0.4)" stroke-width="1.2">
+            <polygon points="352,286 470,176 588,286" fill="url(#banyaWall)" stroke="#0e7ba8" stroke-width="1.8" stroke-linejoin="round"/>
+            <rect x="376" y="286" width="188" height="114" fill="url(#banyaWall)" stroke="#0e7ba8" stroke-width="1.8"/>
+            <line x1="376" y1="306" x2="564" y2="306" stroke="rgba(14,123,168,0.4)" stroke-width="1.3"/>
+            <line x1="376" y1="326" x2="564" y2="326" stroke="rgba(14,123,168,0.4)" stroke-width="1.3"/>
+            <line x1="376" y1="346" x2="564" y2="346" stroke="rgba(14,123,168,0.4)" stroke-width="1.3"/>
+            <line x1="376" y1="366" x2="564" y2="366" stroke="rgba(14,123,168,0.4)" stroke-width="1.3"/>
+            <line x1="376" y1="386" x2="564" y2="386" stroke="rgba(14,123,168,0.4)" stroke-width="1.3"/>
+            <rect x="456" y="148" width="20" height="58" rx="1" fill="#f7fbfe" stroke="#0e7ba8" stroke-width="1.6"/>
+            <rect x="448" y="140" width="36" height="12" rx="2" fill="#ffffff" stroke="#0e7ba8" stroke-width="1.6"/>
+            <g fill="rgba(255,255,255,0.92)" stroke="rgba(14,123,168,0.4)" stroke-width="1.2">
               <ellipse cx="478" cy="118" rx="14" ry="8"/>
               <ellipse cx="496" cy="102" rx="16" ry="9"/>
               <ellipse cx="468" cy="88" rx="14" ry="8"/>
             </g>
-            <rect x="470" y="312" width="40" height="32" rx="2" fill="#ffffff" stroke="#0B4697" stroke-width="1.6"/>
+            <rect x="470" y="312" width="40" height="32" rx="2" fill="#ffffff" stroke="#0e7ba8" stroke-width="1.6"/>
             <rect x="476" y="318" width="12" height="10" fill="url(#banyaGlass)"/>
             <rect x="492" y="318" width="12" height="10" fill="url(#banyaGlass)"/>
             <rect x="476" y="330" width="12" height="8" fill="url(#banyaGlass)"/>
@@ -2897,7 +2897,7 @@ body.nav-open{
           </g>
 
           <path d="M318 412V372" stroke="#8eabbf" stroke-width="5" stroke-linecap="round"/>
-          <path d="M318 380c-16 2-24-10-16-20-8-4-6-16 4-20 4-10 16-14 24-6 6-8 22-4 22 6 10 4 12 16 4 22 6 10-4 18-14 16-4 6-14 8-24 2z" fill="rgba(11,70,151,0.15)" stroke="#0B4697" stroke-width="1.4" stroke-linejoin="round"/>
+          <path d="M318 380c-16 2-24-10-16-20-8-4-6-16 4-20 4-10 16-14 24-6 6-8 22-4 22 6 10 4 12 16 4 22 6 10-4 18-14 16-4 6-14 8-24 2z" fill="rgba(14,123,168,0.15)" stroke="#0e7ba8" stroke-width="1.4" stroke-linejoin="round"/>
 
           <line class="ground-line" x1="28" y1="412" x2="78" y2="412"/>
           <line class="ground-line" x1="564" y1="412" x2="592" y2="412"/>
@@ -2916,8 +2916,8 @@ body.nav-open{
           </defs>
 
           <rect width="620" height="480" fill="url(#tentSky)"/>
-          <circle cx="96" cy="78" r="34" fill="#BCE4FA"/>
-          <circle cx="96" cy="78" r="20" fill="#BCE4FA"/>
+          <circle cx="96" cy="78" r="34" fill="rgba(48,177,232,0.16)"/>
+          <circle cx="96" cy="78" r="20" fill="rgba(48,177,232,0.18)"/>
           <g fill="rgba(255,255,255,0.85)">
             <ellipse cx="470" cy="70" rx="34" ry="14"/>
             <ellipse cx="498" cy="64" rx="24" ry="15"/>
@@ -2979,8 +2979,8 @@ body.nav-open{
           </defs>
 
           <rect width="620" height="480" fill="url(#customSky)"/>
-          <circle cx="300" cy="72" r="34" fill="#BCE4FA"/>
-          <circle cx="300" cy="72" r="20" fill="#BCE4FA"/>
+          <circle cx="300" cy="72" r="34" fill="rgba(48,177,232,0.16)"/>
+          <circle cx="300" cy="72" r="20" fill="rgba(48,177,232,0.18)"/>
           <g fill="rgba(255,255,255,0.85)">
             <ellipse cx="108" cy="78" rx="32" ry="14"/>
             <ellipse cx="134" cy="72" rx="22" ry="14"/>
@@ -2991,59 +2991,59 @@ body.nav-open{
           <ellipse cx="300" cy="418" rx="250" ry="11" fill="rgba(15,39,68,0.07)"/>
 
           <g>
-            <polygon points="78,186 170,118 262,186" fill="#fff" stroke="#0B4697" stroke-width="1.7" stroke-linejoin="round"/>
-            <rect x="74" y="180" width="192" height="14" rx="2" fill="#eef6fb" stroke="#0B4697" stroke-width="1.6"/>
-            <rect x="96" y="194" width="148" height="70" fill="rgba(255,255,255,0.72)" stroke="#0B4697" stroke-width="1.7"/>
-            <line x1="96" y1="216" x2="244" y2="216" stroke="rgba(11,70,151,0.4)" stroke-width="1.2"/>
-            <rect x="96" y="272" width="148" height="92" fill="#fff" stroke="#0B4697" stroke-width="1.7"/>
-            <line x1="96" y1="302" x2="244" y2="302" stroke="rgba(11,70,151,0.4)" stroke-width="1.2"/>
-            <line x1="96" y1="332" x2="244" y2="332" stroke="rgba(11,70,151,0.4)" stroke-width="1.2"/>
+            <polygon points="78,186 170,118 262,186" fill="#fff" stroke="#0e7ba8" stroke-width="1.7" stroke-linejoin="round"/>
+            <rect x="74" y="180" width="192" height="14" rx="2" fill="#eef6fb" stroke="#0e7ba8" stroke-width="1.6"/>
+            <rect x="96" y="194" width="148" height="70" fill="rgba(255,255,255,0.72)" stroke="#0e7ba8" stroke-width="1.7"/>
+            <line x1="96" y1="216" x2="244" y2="216" stroke="rgba(14,123,168,0.4)" stroke-width="1.2"/>
+            <rect x="96" y="272" width="148" height="92" fill="#fff" stroke="#0e7ba8" stroke-width="1.7"/>
+            <line x1="96" y1="302" x2="244" y2="302" stroke="rgba(14,123,168,0.4)" stroke-width="1.2"/>
+            <line x1="96" y1="332" x2="244" y2="332" stroke="rgba(14,123,168,0.4)" stroke-width="1.2"/>
             <rect x="146" y="342" width="48" height="14" rx="3" fill="#fff7f8" stroke="#990033" stroke-width="1.6"/>
-            <rect x="128" y="364" width="84" height="8" rx="1" fill="#d7e6f1" stroke="#0B4697" stroke-width="1.3"/>
-            <rect x="88" y="364" width="164" height="12" rx="1" fill="#e7f1f8" stroke="#0B4697" stroke-width="1.5"/>
-            <rect x="104" y="376" width="16" height="24" rx="1" fill="#f7fbfe" stroke="#0B4697" stroke-width="1.4"/>
-            <rect x="220" y="376" width="16" height="24" rx="1" fill="#f7fbfe" stroke="#0B4697" stroke-width="1.4"/>
-            <g fill="#fff" stroke="#0B4697" stroke-width="1.2">
+            <rect x="128" y="364" width="84" height="8" rx="1" fill="#d7e6f1" stroke="#0e7ba8" stroke-width="1.3"/>
+            <rect x="88" y="364" width="164" height="12" rx="1" fill="#e7f1f8" stroke="#0e7ba8" stroke-width="1.5"/>
+            <rect x="104" y="376" width="16" height="24" rx="1" fill="#f7fbfe" stroke="#0e7ba8" stroke-width="1.4"/>
+            <rect x="220" y="376" width="16" height="24" rx="1" fill="#f7fbfe" stroke="#0e7ba8" stroke-width="1.4"/>
+            <g fill="#fff" stroke="#0e7ba8" stroke-width="1.2">
               <ellipse cx="248" cy="330" rx="8" ry="4.5"/>
-              <ellipse cx="244" cy="324" rx="5.5" ry="3" fill="rgba(11,70,151,0.16)"/>
-              <ellipse cx="252" cy="325" rx="4.5" ry="2.6" fill="rgba(11,70,151,0.12)"/>
+              <ellipse cx="244" cy="324" rx="5.5" ry="3" fill="rgba(14,123,168,0.16)"/>
+              <ellipse cx="252" cy="325" rx="4.5" ry="2.6" fill="rgba(14,123,168,0.12)"/>
               <ellipse cx="214" cy="312" rx="7" ry="4"/>
-              <ellipse cx="210" cy="307" rx="5" ry="2.8" fill="rgba(11,70,151,0.16)"/>
-              <ellipse cx="218" cy="308" rx="4" ry="2.4" fill="rgba(11,70,151,0.12)"/>
+              <ellipse cx="210" cy="307" rx="5" ry="2.8" fill="rgba(14,123,168,0.16)"/>
+              <ellipse cx="218" cy="308" rx="4" ry="2.4" fill="rgba(14,123,168,0.12)"/>
             </g>
           </g>
 
           <g>
-            <path d="M332 400 V292 C332 188 392 146 452 146 C512 146 572 188 572 292 V400 Z" fill="url(#customGlass)" stroke="#0B4697" stroke-width="1.8" stroke-linejoin="round"/>
-            <path d="M352 400 V304 C352 214 402 168 452 168 C502 168 552 214 552 304 V400" fill="none" stroke="rgba(11,70,151,0.55)" stroke-width="1.4"/>
-            <path d="M392 400 V286 C392 214 424 184 452 184 C480 184 512 214 512 286 V400" fill="none" stroke="rgba(11,70,151,0.4)" stroke-width="1.3"/>
-            <path d="M332 318 H572 M352 360 H552" fill="none" stroke="rgba(11,70,151,0.4)" stroke-width="1.3"/>
+            <path d="M332 400 V292 C332 188 392 146 452 146 C512 146 572 188 572 292 V400 Z" fill="url(#customGlass)" stroke="#0e7ba8" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M352 400 V304 C352 214 402 168 452 168 C502 168 552 214 552 304 V400" fill="none" stroke="rgba(14,123,168,0.55)" stroke-width="1.4"/>
+            <path d="M392 400 V286 C392 214 424 184 452 184 C480 184 512 214 512 286 V400" fill="none" stroke="rgba(14,123,168,0.4)" stroke-width="1.3"/>
+            <path d="M332 318 H572 M352 360 H552" fill="none" stroke="rgba(14,123,168,0.4)" stroke-width="1.3"/>
             <g stroke-linecap="round" stroke-linejoin="round">
-              <path d="M378 398c2-24 8-46 4-68" fill="none" stroke="#0B4697" stroke-width="1.6"/>
-              <path d="M380 372c-18-2-26-16-18-26 12 3 22 12 20 22z" fill="rgba(11,70,151,0.2)" stroke="#0B4697" stroke-width="1.2"/>
-              <path d="M382 348c16-10 28-4 30 10-14 3-24 2-30-2z" fill="rgba(11,70,151,0.16)" stroke="#0B4697" stroke-width="1.2"/>
-              <path d="M374 386c-16 2-24-10-16-20 10 5 18 10 20 14z" fill="rgba(11,70,151,0.14)" stroke="#0B4697" stroke-width="1.2"/>
+              <path d="M378 398c2-24 8-46 4-68" fill="none" stroke="#0e7ba8" stroke-width="1.6"/>
+              <path d="M380 372c-18-2-26-16-18-26 12 3 22 12 20 22z" fill="rgba(14,123,168,0.2)" stroke="#0e7ba8" stroke-width="1.2"/>
+              <path d="M382 348c16-10 28-4 30 10-14 3-24 2-30-2z" fill="rgba(14,123,168,0.16)" stroke="#0e7ba8" stroke-width="1.2"/>
+              <path d="M374 386c-16 2-24-10-16-20 10 5 18 10 20 14z" fill="rgba(14,123,168,0.14)" stroke="#0e7ba8" stroke-width="1.2"/>
               <circle cx="356" cy="360" r="4.6" fill="#fff7f8" stroke="#990033" stroke-width="1.3"/>
-              <path d="M356 355.6v-3.2" stroke="#0B4697" stroke-width="1.2"/>
+              <path d="M356 355.6v-3.2" stroke="#0e7ba8" stroke-width="1.2"/>
               <circle cx="404" cy="342" r="4" fill="#fff7f8" stroke="#990033" stroke-width="1.3"/>
-              <path d="M404 338.2v-3" stroke="#0B4697" stroke-width="1.2"/>
+              <path d="M404 338.2v-3" stroke="#0e7ba8" stroke-width="1.2"/>
               <circle cx="392" cy="378" r="5" fill="#fff7f8" stroke="#990033" stroke-width="1.3"/>
-              <path d="M392 373.2v-3" stroke="#0B4697" stroke-width="1.2"/>
+              <path d="M392 373.2v-3" stroke="#0e7ba8" stroke-width="1.2"/>
               <circle cx="362" cy="386" r="3.6" fill="#fff7f8" stroke="#990033" stroke-width="1.3"/>
-              <path d="M362 382.6v-2.8" stroke="#0B4697" stroke-width="1.2"/>
+              <path d="M362 382.6v-2.8" stroke="#0e7ba8" stroke-width="1.2"/>
 
-              <path d="M518 398c-2-24-8-46-4-68" fill="none" stroke="#0B4697" stroke-width="1.6"/>
-              <path d="M516 372c18-2 26-16 18-26-12 3-22 12-20 22z" fill="rgba(11,70,151,0.2)" stroke="#0B4697" stroke-width="1.2"/>
-              <path d="M514 348c-16-10-28-4-30 10 14 3 24 2 30-2z" fill="rgba(11,70,151,0.16)" stroke="#0B4697" stroke-width="1.2"/>
-              <path d="M522 386c16 2 24-10 16-20-10 5-18 10-20 14z" fill="rgba(11,70,151,0.14)" stroke="#0B4697" stroke-width="1.2"/>
+              <path d="M518 398c-2-24-8-46-4-68" fill="none" stroke="#0e7ba8" stroke-width="1.6"/>
+              <path d="M516 372c18-2 26-16 18-26-12 3-22 12-20 22z" fill="rgba(14,123,168,0.2)" stroke="#0e7ba8" stroke-width="1.2"/>
+              <path d="M514 348c-16-10-28-4-30 10 14 3 24 2 30-2z" fill="rgba(14,123,168,0.16)" stroke="#0e7ba8" stroke-width="1.2"/>
+              <path d="M522 386c16 2 24-10 16-20-10 5-18 10-20 14z" fill="rgba(14,123,168,0.14)" stroke="#0e7ba8" stroke-width="1.2"/>
               <circle cx="540" cy="360" r="4.6" fill="#fff7f8" stroke="#990033" stroke-width="1.3"/>
-              <path d="M540 355.6v-3.2" stroke="#0B4697" stroke-width="1.2"/>
+              <path d="M540 355.6v-3.2" stroke="#0e7ba8" stroke-width="1.2"/>
               <circle cx="492" cy="342" r="4" fill="#fff7f8" stroke="#990033" stroke-width="1.3"/>
-              <path d="M492 338.2v-3" stroke="#0B4697" stroke-width="1.2"/>
+              <path d="M492 338.2v-3" stroke="#0e7ba8" stroke-width="1.2"/>
               <circle cx="504" cy="378" r="5" fill="#fff7f8" stroke="#990033" stroke-width="1.3"/>
-              <path d="M504 373.2v-3" stroke="#0B4697" stroke-width="1.2"/>
+              <path d="M504 373.2v-3" stroke="#0e7ba8" stroke-width="1.2"/>
               <circle cx="534" cy="386" r="3.6" fill="#fff7f8" stroke="#990033" stroke-width="1.3"/>
-              <path d="M534 382.6v-2.8" stroke="#0B4697" stroke-width="1.2"/>
+              <path d="M534 382.6v-2.8" stroke="#0e7ba8" stroke-width="1.2"/>
             </g>
             <rect x="424" y="312" width="56" height="88" rx="3" fill="#fff7f8" stroke="#990033" stroke-width="1.8"/>
             <rect x="430" y="322" width="44" height="30" rx="2" fill="rgba(153,0,51,0.08)" stroke="rgba(153,0,51,0.35)" stroke-width="1.2"/>
@@ -3072,8 +3072,8 @@ body.nav-open{
           </defs>
 
           <rect width="620" height="480" fill="url(#plantSky)"/>
-          <circle cx="86" cy="64" r="28" fill="#BCE4FA"/>
-          <circle cx="86" cy="64" r="16" fill="#BCE4FA"/>
+          <circle cx="86" cy="64" r="28" fill="rgba(48,177,232,0.16)"/>
+          <circle cx="86" cy="64" r="16" fill="rgba(48,177,232,0.18)"/>
           <g fill="rgba(255,255,255,0.85)">
             <ellipse cx="500" cy="58" rx="30" ry="12"/>
             <ellipse cx="526" cy="52" rx="20" ry="12"/>
@@ -3083,7 +3083,7 @@ body.nav-open{
           <rect x="0" y="412" width="620" height="68" fill="#e3eef6"/>
           <ellipse cx="300" cy="418" rx="260" ry="11" fill="rgba(15,39,68,0.07)"/>
 
-          <g fill="none" stroke="#0B4697" stroke-linecap="round">
+          <g fill="none" stroke="#0e7ba8" stroke-linecap="round">
             <path d="M24 340 H104" stroke-width="6"/>
             <path d="M24 366 H104" stroke-width="6"/>
             <path d="M24 392 H104" stroke-width="5"/>
@@ -3093,24 +3093,24 @@ body.nav-open{
           </g>
 
           <g>
-            <rect x="96" y="168" width="392" height="22" rx="1" fill="#f7fbfe" stroke="#0B4697" stroke-width="1.7"/>
-            <rect x="150" y="132" width="210" height="38" fill="url(#plantWall)" stroke="#0B4697" stroke-width="1.6"/>
-            <path d="M162 144 H348 M162 156 H348" stroke="rgba(11,70,151,0.4)" stroke-width="1.3"/>
-            <rect x="104" y="188" width="376" height="208" fill="url(#plantWall)" stroke="#0B4697" stroke-width="1.8"/>
-            <path d="M104 248 H480 M104 308 H480" stroke="rgba(11,70,151,0.28)" stroke-width="1.3"/>
-            <rect x="92" y="394" width="400" height="12" rx="1" fill="#d7e6f1" stroke="#0B4697" stroke-width="1.4"/>
+            <rect x="96" y="168" width="392" height="22" rx="1" fill="#f7fbfe" stroke="#0e7ba8" stroke-width="1.7"/>
+            <rect x="150" y="132" width="210" height="38" fill="url(#plantWall)" stroke="#0e7ba8" stroke-width="1.6"/>
+            <path d="M162 144 H348 M162 156 H348" stroke="rgba(14,123,168,0.4)" stroke-width="1.3"/>
+            <rect x="104" y="188" width="376" height="208" fill="url(#plantWall)" stroke="#0e7ba8" stroke-width="1.8"/>
+            <path d="M104 248 H480 M104 308 H480" stroke="rgba(14,123,168,0.28)" stroke-width="1.3"/>
+            <rect x="92" y="394" width="400" height="12" rx="1" fill="#d7e6f1" stroke="#0e7ba8" stroke-width="1.4"/>
 
-            <rect x="124" y="208" width="336" height="22" fill="url(#plantGlass)" stroke="#0B4697" stroke-width="1.3"/>
-            <path d="M164 208 V230 M204 208 V230 M244 208 V230 M284 208 V230 M324 208 V230 M364 208 V230 M404 208 V230" stroke="rgba(11,70,151,0.45)" stroke-width="1.2"/>
+            <rect x="124" y="208" width="336" height="22" fill="url(#plantGlass)" stroke="#0e7ba8" stroke-width="1.3"/>
+            <path d="M164 208 V230 M204 208 V230 M244 208 V230 M284 208 V230 M324 208 V230 M364 208 V230 M404 208 V230" stroke="rgba(14,123,168,0.45)" stroke-width="1.2"/>
 
-            <rect x="124" y="262" width="70" height="28" rx="1" fill="url(#plantGlass)" stroke="#0B4697" stroke-width="1.4"/>
-            <rect x="206" y="262" width="70" height="28" rx="1" fill="url(#plantGlass)" stroke="#0B4697" stroke-width="1.4"/>
-            <rect x="288" y="262" width="70" height="28" rx="1" fill="url(#plantGlass)" stroke="#0B4697" stroke-width="1.4"/>
-            <path d="M147 262 V290 M229 262 V290 M311 262 V290" stroke="rgba(11,70,151,0.4)" stroke-width="1.2"/>
+            <rect x="124" y="262" width="70" height="28" rx="1" fill="url(#plantGlass)" stroke="#0e7ba8" stroke-width="1.4"/>
+            <rect x="206" y="262" width="70" height="28" rx="1" fill="url(#plantGlass)" stroke="#0e7ba8" stroke-width="1.4"/>
+            <rect x="288" y="262" width="70" height="28" rx="1" fill="url(#plantGlass)" stroke="#0e7ba8" stroke-width="1.4"/>
+            <path d="M147 262 V290 M229 262 V290 M311 262 V290" stroke="rgba(14,123,168,0.4)" stroke-width="1.2"/>
 
-            <rect x="214" y="324" width="112" height="70" fill="#f7fbfe" stroke="#0B4697" stroke-width="1.7"/>
-            <path d="M270 324 V394" stroke="#0B4697" stroke-width="1.4"/>
-            <path d="M226 352 H314" stroke="rgba(11,70,151,0.4)" stroke-width="1.3"/>
+            <rect x="214" y="324" width="112" height="70" fill="#f7fbfe" stroke="#0e7ba8" stroke-width="1.7"/>
+            <path d="M270 324 V394" stroke="#0e7ba8" stroke-width="1.4"/>
+            <path d="M226 352 H314" stroke="rgba(14,123,168,0.4)" stroke-width="1.3"/>
             <circle cx="258" cy="360" r="2.3" fill="#990033"/>
             <circle cx="282" cy="360" r="2.3" fill="#990033"/>
 
@@ -3121,16 +3121,16 @@ body.nav-open{
           </g>
 
           <g>
-            <rect x="214" y="42" width="14" height="92" fill="#f7fbfe" stroke="#0B4697" stroke-width="1.6"/>
-            <rect x="208" y="36" width="26" height="8" rx="1" fill="#fff" stroke="#0B4697" stroke-width="1.5"/>
-            <rect x="172" y="70" width="10" height="64" fill="#f7fbfe" stroke="#0B4697" stroke-width="1.5"/>
-            <rect x="167" y="64" width="20" height="7" rx="1" fill="#fff" stroke="#0B4697" stroke-width="1.4"/>
-            <path d="M174 62 C164 48 150 46 142 36" fill="none" stroke="rgba(11,70,151,0.35)" stroke-width="2" stroke-linecap="round"/>
-            <circle cx="150" cy="30" r="5" fill="rgba(11,70,151,0.12)"/>
-            <circle cx="138" cy="22" r="3.5" fill="rgba(11,70,151,0.1)"/>
+            <rect x="214" y="42" width="14" height="92" fill="#f7fbfe" stroke="#0e7ba8" stroke-width="1.6"/>
+            <rect x="208" y="36" width="26" height="8" rx="1" fill="#fff" stroke="#0e7ba8" stroke-width="1.5"/>
+            <rect x="172" y="70" width="10" height="64" fill="#f7fbfe" stroke="#0e7ba8" stroke-width="1.5"/>
+            <rect x="167" y="64" width="20" height="7" rx="1" fill="#fff" stroke="#0e7ba8" stroke-width="1.4"/>
+            <path d="M174 62 C164 48 150 46 142 36" fill="none" stroke="rgba(14,123,168,0.35)" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="150" cy="30" r="5" fill="rgba(14,123,168,0.12)"/>
+            <circle cx="138" cy="22" r="3.5" fill="rgba(14,123,168,0.1)"/>
           </g>
 
-          <g fill="none" stroke="#0B4697" stroke-linecap="round">
+          <g fill="none" stroke="#0e7ba8" stroke-linecap="round">
             <path d="M480 344 H568" stroke-width="6"/>
             <path d="M480 370 H568" stroke-width="6"/>
             <path d="M480 396 H568" stroke-width="5"/>
@@ -3415,14 +3415,14 @@ body.nav-open{
       <article class="service-card">
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 80 80" fill="none">
-            <rect x="16" y="30" width="48" height="34" rx="6" fill="rgba(11,70,151,.14)" stroke="#0B4697" stroke-width="2.2"/>
-            <path d="M26 42h28M26 50h28M26 58h20" stroke="#0B4697" stroke-width="1.8" stroke-linecap="round"/>
-            <path d="M40 8v16" stroke="#0B4697" stroke-width="2.2" stroke-linecap="round"/>
-            <path d="M33 17l7 7 7-7" stroke="#0B4697" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M4 47h8" stroke="#0B4697" stroke-width="2.2" stroke-linecap="round"/>
-            <path d="M8 42l5 5-5 5" stroke="#0B4697" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M76 47h-8" stroke="#0B4697" stroke-width="2.2" stroke-linecap="round"/>
-            <path d="M72 42l-5 5 5 5" stroke="#0B4697" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="16" y="30" width="48" height="34" rx="6" fill="rgba(14,123,168,.14)" stroke="#0e7ba8" stroke-width="2.2"/>
+            <path d="M26 42h28M26 50h28M26 58h20" stroke="#0e7ba8" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M40 8v16" stroke="#0e7ba8" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M33 17l7 7 7-7" stroke="#0e7ba8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M4 47h8" stroke="#0e7ba8" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M8 42l5 5-5 5" stroke="#0e7ba8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M76 47h-8" stroke="#0e7ba8" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M72 42l-5 5 5 5" stroke="#0e7ba8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
         <div>
@@ -3434,12 +3434,12 @@ body.nav-open{
       <article class="service-card">
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 80 80" fill="none">
-            <rect x="6" y="20" width="38" height="14" rx="3" fill="rgba(11,70,151,.14)" stroke="#0B4697" stroke-width="2"/>
-            <path d="M6 23v8" stroke="#0B4697" stroke-width="2.2" stroke-linecap="round"/>
-            <circle cx="54" cy="27" r="15" fill="#fff" stroke="#0B4697" stroke-width="2.2"/>
-            <circle cx="54" cy="27" r="4" fill="rgba(11,70,151,.16)" stroke="#0B4697" stroke-width="2"/>
-            <rect x="8" y="50" width="64" height="16" rx="3" fill="rgba(11,70,151,.12)" stroke="#0B4697" stroke-width="2"/>
-            <path d="M18 50v7M28 50v4M38 50v7M48 50v4M58 50v7M66 50v4" stroke="#0B4697" stroke-width="1.6" stroke-linecap="round"/>
+            <rect x="6" y="20" width="38" height="14" rx="3" fill="rgba(14,123,168,.14)" stroke="#0e7ba8" stroke-width="2"/>
+            <path d="M6 23v8" stroke="#0e7ba8" stroke-width="2.2" stroke-linecap="round"/>
+            <circle cx="54" cy="27" r="15" fill="#fff" stroke="#0e7ba8" stroke-width="2.2"/>
+            <circle cx="54" cy="27" r="4" fill="rgba(14,123,168,.16)" stroke="#0e7ba8" stroke-width="2"/>
+            <rect x="8" y="50" width="64" height="16" rx="3" fill="rgba(14,123,168,.12)" stroke="#0e7ba8" stroke-width="2"/>
+            <path d="M18 50v7M28 50v4M38 50v7M48 50v4M58 50v7M66 50v4" stroke="#0e7ba8" stroke-width="1.6" stroke-linecap="round"/>
           </svg>
         </div>
         <div>
