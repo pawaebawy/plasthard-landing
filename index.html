@@ -625,11 +625,6 @@ ul{ margin:0; padding:0; list-style:none; }
   flex-direction:column;
   box-shadow:var(--shadow-sm);
   cursor:pointer;
-  transition:border-color .35s ease, box-shadow .35s ease;
-}
-.product-card:hover{
-  border-color:var(--cyan);
-  box-shadow:inset 0 0 0 1px var(--cyan);
 }
 .product-card:hover .product-visual img{
   transform:scale(1.05);
@@ -961,6 +956,7 @@ ul{ margin:0; padding:0; list-style:none; }
   text-align:center;
   line-height:1.35;
 }
+.scheme-tab-short{ display:none; }
 .scheme-tab:hover{ color:var(--cyan); border-color:rgba(14,123,168,.5); }
 .scheme-tab.active{
   background:var(--cyan);
@@ -2112,11 +2108,11 @@ body.nav-open{
     background:#fff;
     border-bottom:1px solid rgba(14,123,168,.18);
     box-shadow:0 24px 48px rgba(15,39,68,.12);
+    height:calc(100dvh - 60px);
     transform:translateY(-14px);
     opacity:0;
     visibility:hidden;
     transition:transform .3s ease, opacity .3s ease, visibility .3s ease;
-    max-height:calc(100dvh - 60px);
     overflow-y:auto;
   }
   .nav.open{
@@ -2132,7 +2128,7 @@ body.nav-open{
   .nav-cta{
     display:flex;
     width:100%;
-    margin-top:12px;
+    margin-top:auto;
   }
   .burger{ display:block; }
   .header-actions{ margin-left:auto; }
@@ -2186,6 +2182,9 @@ body.nav-open{
   .service-card{ padding:24px; gap:16px; }
   .service-icon{ flex-basis:96px; width:96px; height:96px; }
   .footer-top{ gap:28px; }
+  .scheme-tab--wide{ white-space:nowrap; }
+  .scheme-tab-full{ display:none; }
+  .scheme-tab-short{ display:inline; }
 }
 
 @media (max-width:480px){
@@ -2585,7 +2584,7 @@ body.nav-open{
       <button type="button" class="scheme-tab active" data-tab="floor">Полы</button>
       <button type="button" class="scheme-tab scheme-tab--extra" data-tab="flat">Квартира</button>
       <button type="button" class="scheme-tab scheme-tab--extra" data-tab="banya">Дача и баня</button>
-      <button type="button" class="scheme-tab scheme-tab--extra scheme-tab--wide" data-tab="tent">Каркасно-тентовые и купольные конструкции</button>
+      <button type="button" class="scheme-tab scheme-tab--extra scheme-tab--wide" data-tab="tent" aria-label="Каркасно-тентовые и купольные конструкции"><span class="scheme-tab-full">Каркасно-тентовые и купольные конструкции</span><span class="scheme-tab-short">Тенты и купола</span></button>
       <button type="button" class="scheme-tab scheme-tab--extra" data-tab="industrial">Промышленные объекты</button>
       <button type="button" class="scheme-tab scheme-tab--extra" data-tab="custom">Нестандартное применение</button>
       <button type="button" class="scheme-more" id="schemeMore" aria-expanded="false">Показать еще</button>
@@ -2806,8 +2805,12 @@ body.nav-open{
           <rect x="220" y="56" width="12" height="14" rx="1" fill="#f7fbfe" stroke="#0e7ba8" stroke-width="1.5"/>
 
           <g>
-            <path d="M72 412V364" stroke="#8eabbf" stroke-width="6" stroke-linecap="round"/>
-            <path d="M72 372c-26 2-38-16-28-34-14-6-14-26 2-34 2-16 22-26 36-14 12-12 36-6 36 12 16 4 22 24 8 36 10 14-2 32-20 30-6 8-22 10-34 4z" fill="rgba(14,123,168,0.15)" stroke="#0e7ba8" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M72 412V356" stroke="#8eabbf" stroke-width="6" stroke-linecap="round"/>
+            <g fill="rgba(14,123,168,0.15)" stroke="#0e7ba8" stroke-width="1.5" stroke-linejoin="round">
+              <path d="M34 360C28 360 26 350 32 344C30 334 40 324 50 330C54 318 70 320 70 334C80 330 86 342 78 352C84 360 76 372 64 368C56 378 40 374 34 360Z"/>
+              <path d="M72 362C64 362 62 350 70 344C66 332 78 322 90 330C96 316 114 318 116 334C128 330 132 346 120 354C126 364 114 376 100 368C92 378 76 372 72 362Z"/>
+              <path d="M54 340C48 340 46 330 52 326C50 316 60 308 70 314C76 302 92 304 94 318C104 312 112 324 104 334C110 342 100 352 88 346C80 354 62 350 54 340Z"/>
+            </g>
           </g>
           <line class="ground-line" x1="36" y1="412" x2="168" y2="412"/>
           <line class="ground-line" x1="460" y1="412" x2="584" y2="412"/>
@@ -2895,9 +2898,6 @@ body.nav-open{
             <rect x="406" y="368" width="26" height="20" rx="2" fill="rgba(153,0,51,0.08)" stroke="rgba(153,0,51,0.35)" stroke-width="1.2"/>
             <circle cx="428" cy="380" r="2.2" fill="#990033"/>
           </g>
-
-          <path d="M318 412V372" stroke="#8eabbf" stroke-width="5" stroke-linecap="round"/>
-          <path d="M318 380c-16 2-24-10-16-20-8-4-6-16 4-20 4-10 16-14 24-6 6-8 22-4 22 6 10 4 12 16 4 22 6 10-4 18-14 16-4 6-14 8-24 2z" fill="rgba(14,123,168,0.15)" stroke="#0e7ba8" stroke-width="1.4" stroke-linejoin="round"/>
 
           <line class="ground-line" x1="28" y1="412" x2="78" y2="412"/>
           <line class="ground-line" x1="564" y1="412" x2="592" y2="412"/>
